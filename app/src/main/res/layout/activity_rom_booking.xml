@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="top"
+    android:layout_height="match_parent"
+    tools:context=".RomBookingActivity"
+    android:background="#ffffff"
+    >
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:textSize="20dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Søk grupperom"
+        android:id="@+id/tv_tittel"
+        android:background="#69b0a7"
+        android:textColor="#ffffff" />
+
+    <SearchView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        android:layout_below="@+id/tv_tittel"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <EditText
+            android:id="@+id/et_dato"
+            android:layout_width="120dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="30dp"
+            android:editable="false"
+            android:textAlignment="center"
+            android:background="#f3f7f7"
+
+            >
+        </EditText>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:text="Dato"
+            android:id="@+id/bt_dato"
+            android:background="#69b0a7"
+            android:textColor="#ffffff"
+            />
+
+        <EditText
+            android:id="@+id/et_tid_fra"
+            android:layout_width="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_height="30dp"
+            android:editable="false"
+            android:textAlignment="center"
+            android:background="#f3f7f7"
+            >
+        </EditText>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:text="Fra"
+            android:id="@+id/bt_tid_fra"
+            android:background="#69b0a7"
+            android:textColor="#ffffff"/>
+
+        <EditText
+            android:id="@+id/et_tid_til"
+            android:layout_width="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_height="30dp"
+            android:editable="false"
+            android:textAlignment="center"
+            android:background="#f3f7f7"
+            >
+        </EditText>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:text="Til"
+            android:id="@+id/bt_tid_til"
+            android:background="#69b0a7"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <Button
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Vis ledige"
+            android:id="@+id/vis_ledige"
+            android:background="#69b0a7"
+            android:textColor="#ffffff"
+            android:layout_weight="0.24" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ledige Grupperom"
+        android:textSize="20dp"
+        android:id="@+id/tv_ledig_grupperom"
+        android:background="#69b0a7"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:textSize="15dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Velg et grupperom fra listen"
+        android:id="@+id/sub_tittel" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/tv_ledig_grupperom"
+        android:layout_alignStart="@+id/sub_tittel"
+        android:layout_toStartOf="@+id/bt_dato">
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="top"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#ffffff"
+    android:weightSum="1">
+
+    <TextView
+
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:textSize="20dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Dine reservasjoner"
+        android:id="@+id/tv_tittel"
+        android:background="#69b0a7"
+        android:textColor="#ffffff" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.07"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Rom"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:id="@+id/textView12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Dato"
+            android:id="@+id/textView11" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Fra"
+            android:id="@+id/textView13" />
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Til"
+            android:id="@+id/textView14"
+            android:layout_weight="0.09" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"></LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ff"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</LinearLayout>

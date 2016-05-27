@@ -15,6 +15,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RomBookingActivity" />
+        <activity android:name=".RegisterUserActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ReservasjonerActivity" />
+        <activity android:name=".KvitteringActivity" />
+        <activity android:name=".ReserverRomActivity" />
+        <activity android:name=".SendBekreftelseActivity" />
     </application>
 
 </manifest>

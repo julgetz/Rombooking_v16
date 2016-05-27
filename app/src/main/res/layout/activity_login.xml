@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:gravity="top"
+    android:layout_height="match_parent"
+    tools:context="com.example.julia.rombooking_v16.LoginActivity"
+    android:background="#ffffff"
+    android:weightSum="1">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:textSize="20dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Registrer"
+        android:id="@+id/tv_tittel_login"
+        android:background="#69b0a7"
+        android:textColor="#ffffff" />
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"></LinearLayout>
+
+
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Email"
+        android:id="@+id/tv_login_email" />
+
+    <LinearLayout
+        android:layout_marginTop="2dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/et_login_email" />
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></LinearLayout>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Passord"
+        android:id="@+id/tv_login_passord" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/et_login_passord" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:layout_width="323dp"
+            android:layout_height="wrap_content"
+            android:text="login"
+            android:id="@+id/bt_login"
+            android:layout_gravity="center_horizontal"
+            android:background="#69b0a7"
+            android:textSize="20dp"
+            android:textColor="#ffffff"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"></LinearLayout>
+
+    <Button
+        android:layout_width="328dp"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:id="@+id/bt_login_reg"
+        android:layout_gravity="center_horizontal"
+        android:background="#69b0a7"
+        android:textSize="20dp"
+        android:textColor="#ffffff"/>
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:textColor="#69b0a7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Login eller Register"
+            android:id="@+id/textView15"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+
