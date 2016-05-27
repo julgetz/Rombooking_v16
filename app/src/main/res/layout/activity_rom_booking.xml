@@ -144,9 +144,10 @@
             android:layout_height="fill_parent"
             android:orientation="vertical">
 
-
-
-
+            <fragment
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/fragment_rom_list"/>
 
         </LinearLayout>
     </LinearLayout>
