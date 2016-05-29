@@ -18,8 +18,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        System.out.print("hohonigguh");
-
     }
 
     @Override
@@ -37,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
         dataSource.open(); // opens database connection
         //dataSource.deleteWeatherDataTable();
-
     }
 
     // closes database connectio
@@ -46,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         dataSource.close();
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -87,19 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent dineReservasjonerIntent = new Intent(this,ReservasjonerActivity.class);
                 startActivity(dineReservasjonerIntent);
                 break;
-
         }
         return super.onOptionsItemSelected(item);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
