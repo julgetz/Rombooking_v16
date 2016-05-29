@@ -9,12 +9,12 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "Rombooking";
-    private static final  int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "Rombooking.db";
+    private static final int DATABASE_VERSION = 2;
 
 
-    public MySQLiteHelper(Context context){
-        super(context, DATABASE_NAME,null, DATABASE_VERSION);
+    public MySQLiteHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     public MySQLiteHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -22,21 +22,42 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        DatabaseTables.OnCreate(db);
+    public void onCreate(SQLiteDatabase database) {
+        BrukerTable.onCreate(database);
+        BrukerTyperTable.onCreate(database);
+        GrupperTable.onCreate(database);
+        GrupperTable.onCreate(database);
+        ReservasjonerTable.onCreate(database);
+        RomTable.onCreate(database);
+        RomTypeTable.onCreate(database);
+        RomUtstyrTable.onCreate(database);
+        UtstyrTable.onCreate(database);
+        CampusTable.onCreate(database);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-       DatabaseTables.onUpgrade(db, oldVersion, newVersion);
-    }
+        BrukerTable.onUpgrade(db, oldVersion, newVersion);
+        BrukerTyperTable.onUpgrade(db, oldVersion, newVersion);
+        GrupperTable.onUpgrade(db, oldVersion, newVersion);
+        GrupperTable.onUpgrade(db, oldVersion, newVersion);
+        ReservasjonerTable.onUpgrade(db, oldVersion, newVersion);
+        RomTable.onUpgrade(db, oldVersion, newVersion);
+        RomTypeTable.onUpgrade(db, oldVersion, newVersion);
+        RomUtstyrTable.onUpgrade(db, oldVersion, newVersion);
+        UtstyrTable.onUpgrade(db, oldVersion, newVersion);
+        CampusTable.onUpgrade(db, oldVersion, newVersion);
 
-    @Override
-    public void onOpen(SQLiteDatabase db) {
-        super.onOpen(db);
-        if(!db.isReadOnly()){
-            db.execSQL("PRAGMA foreign_keys=ON");
-        }
     }
+    @Override
+    public void onOpen(SQLiteDatabase database) {
+        super.onOpen(database);
+        if (!database.isReadOnly()) {
+            // Enable foreign key constraints
+            database.execSQL("PRAGMA foreign_keys=ON;");
+
+
+        } }
 }
+

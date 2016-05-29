@@ -12,6 +12,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import com.google.gson.Gson;
+
 import java.util.Calendar;
 
 public class RomBookingActivity extends AppCompatActivity implements DialogInterface.OnClickListener, View.OnClickListener {
@@ -35,6 +37,7 @@ public class RomBookingActivity extends AppCompatActivity implements DialogInter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rom_booking);
+
         btDato = (Button) findViewById(R.id.bt_dato);
         cal = Calendar.getInstance();
         day = cal.get(Calendar.DAY_OF_MONTH);
@@ -89,10 +92,7 @@ public class RomBookingActivity extends AppCompatActivity implements DialogInter
                 timePickerDialog.show();
             }
         });
-
-
     }
-
 
     @Override
     @Deprecated
@@ -117,4 +117,53 @@ public class RomBookingActivity extends AppCompatActivity implements DialogInter
     public void onClick(View v) {
         showDialog(0);
     }
+
+
+       public void returnRomDate(String s ) {
+
+           Gson gson = new Gson();
+           Rom rom = gson.fromJson(s,Rom.class);
+           // sender rom data til listveiw
+       }
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

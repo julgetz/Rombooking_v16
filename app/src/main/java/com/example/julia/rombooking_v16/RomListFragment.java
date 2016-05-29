@@ -23,17 +23,34 @@ public class RomListFragment extends Fragment {
     private ArrayList<Rom> romList;
     private ArrayAdapter arrayAdapter;
     private ListView lv;
-
-
-
-
+    private DataSource dataSource;
 
     private OnFragmentInteractionListener mListener;
+
+    public interface  OnSelectionChanged {
+        public void onIndexChanged();
+    }
 
     public RomListFragment() {
         // Required empty public constructor
     }
 
+    public void FillRomList(ArrayList<Rom> romList){
+        this.romList = romList;
+        ArrayList<String> romNames = new ArrayList<>();
+        for(Rom rom : romList){
+
+        }
+    }
+
+
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        //dataSource = new DataSource((RomBookingActivity)getActivity());
+        //dataSource.open();
+    }
 
     public static RomListFragment newInstance(String param1, String param2) {
         RomListFragment fragment = new RomListFragment();
@@ -47,17 +64,19 @@ public class RomListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_rom_list2, container, false);
+        return inflater.inflate(R.layout.fragment_rom_list, container, false);
+
     }
 
     public void onButtonPressed(Uri uri) {

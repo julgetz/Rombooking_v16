@@ -144,13 +144,14 @@
             android:layout_height="fill_parent"
             android:orientation="vertical">
 
-            <fragment
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/fragment_rom_list"/>
 
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lv_rom_Selector"
+                android:layout_gravity="center_horizontal" />
         </LinearLayout>
+
+
     </LinearLayout>
-
-
 </LinearLayout>
