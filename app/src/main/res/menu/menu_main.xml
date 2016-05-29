@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://www.w3.org/1999/xhtml"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/instillinger"
+        android:orderInCategory="80"
+        android:icon="@mipmap/arrow"
+        android:title="Innstillinger"
+        app:showAsAction="always" >
+        <menu>
+
+            <item
+                android:id="@+id/login"
+                android:title="Login"/>
+            <item
+                android:id="@+id/ins"
+                android:title="Instillinger"/>
+            <item
+                android:id="@+id/hjelp"
+                android:title="Hjelp"/>
+            <item
+                android:id="@+id/avslutt"
+                android:title="Avslutt"/>
+            <item
+                android:id="@+id/book_rom"
+                android:title="Book rom"/>
+
+            <item
+                android:id="@+id/book_rom_res"
+                android:title="reserver rom"/>
+            <item
+                android:id="@+id/book_rom_kvittering"
+                android:title="Book Rom Kvittering" />
+            <item
+                android:id="@+id/book_rom_send_bekreftelse"
+                android:title="Book rom send bekreftelse " />
+            <item
+                android:id="@+id/book_rom_dine_reservasjoner"
+                android:title="dine reservasjonerrr" />
+        </menu>
+    </item>
+
+
+</menu>

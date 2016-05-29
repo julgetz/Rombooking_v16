@@ -86,6 +86,7 @@ public class DataSource {
 
     // åpner datbasen, har nå et sqlitedatbse-objekt
     public void open() throws SQLException {
+        database = dbHelper.getReadableDatabase();
         database = dbHelper.getWritableDatabase();
     }
 

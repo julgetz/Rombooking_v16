@@ -26,7 +26,7 @@ public class RomTable {
       + ROM_TYPE_KODE + " text, "
       + KAPASITET_UND + " integer, "
       + CAMPUS_ID + " text, "
-      + ER_AKTIVT + " integer, "  + ");";
+      + ER_AKTIVT + " integer "  + ");";
 
 
     public  static void onCreate(SQLiteDatabase database){

@@ -30,7 +30,7 @@ public class BrukerTable {
             + PASSORD + " text, "
             + RANDOM + " text, "
             + VERTIFISERT + " integer, "
-            + OPPRETTET + " text, " + ");";
+            + OPPRETTET + " text " + ");";
 
 
     public static void onCreate(SQLiteDatabase database) {
@@ -42,7 +42,7 @@ public class BrukerTable {
                 + oldVersion + " to " + newVersion
                 + ", which will destroy all old data");
 
-        database.execSQL("DROP TABLE IF EXISTS " + BRUKER_DATA_TABLE);
+        database.execSQL("DROP TABLE IF EXISTS '" + BRUKER_DATA_TABLE + "'");
         onCreate(database);
 
 

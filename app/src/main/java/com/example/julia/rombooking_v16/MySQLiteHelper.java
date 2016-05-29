@@ -4,13 +4,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by Julia on 27.05.2016.
- */
+
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "Rombooking.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final String DATABASE_NAME = "Rombookinga";
+    private static final int DATABASE_VERSION = 7;
 
 
     public MySQLiteHelper(Context context) {

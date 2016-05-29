@@ -36,8 +36,8 @@ public class ReserverRomActivity extends AppCompatActivity  {
     protected void onStart() {
         super.onStart();
 
-        dataSource = new DataSource(this);
-        dataSource.open();
+      //  dataSource = new DataSource(this);
+        //dataSource.open();
     }
 
 
