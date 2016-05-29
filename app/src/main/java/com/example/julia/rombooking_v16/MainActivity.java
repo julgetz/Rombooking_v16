@@ -38,13 +38,7 @@ public class MainActivity extends AppCompatActivity {
         dataSource.open(); // opens database connection
         //dataSource.deleteWeatherDataTable();
 
-
-
     }
-
-
-
-
 
     // closes database connectio
     @Override
