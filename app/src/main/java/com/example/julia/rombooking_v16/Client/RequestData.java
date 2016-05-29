@@ -1,5 +1,6 @@
 package com.example.julia.rombooking_v16.Client;
 
+import android.content.Context;
 import android.net.Uri;
 
 import org.apache.http.HttpResponse;
@@ -46,10 +47,11 @@ public class RequestData {
         loginTask.execute(urlString);
     }
 
-    public void GetRoom(String sessionKey, String brukerkode) {
+    public void GetRoom(String sessionKey, String brukerkode, Context context) {
         String urlString = "/getRoom.php?sessionkey=" + sessionKey + "&bruker_kode=" + brukerkode;
+        ContextUrl contextUrl = new ContextUrl(context, urlString);
         GetRoomAsyncTask getroom = new GetRoomAsyncTask();
-        getroom.execute(urlString);
+        getroom.execute(contextUrl);
 
     }
 
