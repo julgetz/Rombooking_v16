@@ -22,7 +22,7 @@ public class ReservasjonerTable {
     public static final String ROM_KODE = "rom_kode"; // varchar
 
 
-    private static final String RESERVASJONS_DATA_TABLE_CREATE = "create table"
+    private static final String RESERVASJONS_DATA_TABLE_CREATE = "create table "
             + RESERVASJONER_DATA_TABLE
             + " (" + RESERVASJONS_ID + " integer primary key autoincrement, "
             + FRA + " text, "

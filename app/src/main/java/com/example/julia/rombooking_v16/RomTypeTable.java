@@ -10,9 +10,9 @@ public class RomTypeTable {
     public static final String ROM_TYPE_DATA_TABLE = "romTypeTable";
     public static final String ROM_TYPE_KODE = "rom_type_kode";
 
-    private static final String  ROM_TYPE_TABLE_CREATE = "create table"
+    private static final String  ROM_TYPE_TABLE_CREATE = "create table "
             + ROM_TYPE_DATA_TABLE
-            + " (" + ROM_TYPE_KODE + "text primary key not null " + ");";
+            + " (" + ROM_TYPE_KODE + " text primary key not null " + ");";
 
 
     public static void onCreate(SQLiteDatabase database){

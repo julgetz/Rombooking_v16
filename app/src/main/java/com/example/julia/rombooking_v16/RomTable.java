@@ -19,9 +19,9 @@ public class RomTable {
 
     //sql statment for å opprette en ny tabell
 
-    private static final String ROM_DATA_TABLE_CREATE = "create table"
+    private static final String ROM_DATA_TABLE_CREATE = "create table "
       + ROM_DATA_TABLE
-      + " (" + ROM_KODE + "text primary key not null "
+      + " (" + ROM_KODE + " text primary key not null, "
       + ROM_NAVN + " text, "
       + ROM_TYPE_KODE + " text, "
       + KAPASITET_UND + " integer, "

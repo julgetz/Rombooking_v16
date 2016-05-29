@@ -20,7 +20,7 @@ public class BrukerTable {
     public static final String OPPRETTET = "opprettet"; // timestmap  = NUMERIC
 
 
-    private static final String BRUKER_DATA_TABLE_CREATE = "create table"
+    private static final String BRUKER_DATA_TABLE_CREATE = "create table "
             + BRUKER_DATA_TABLE
             + " (" + BRUKER_KODE + " text primary key not null, "
             + FORNAVN + " text, "

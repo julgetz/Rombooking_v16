@@ -79,8 +79,8 @@ public class DataSource {
             ReservasjonerTable.FORMAL,
     };
 
-    public DataSource(ReserverRomActivity romBookingActivity) {
-        parent = romBookingActivity;
+    public DataSource(MainActivity mainActivity) {
+        parent = mainActivity;
         dbHelper = new MySQLiteHelper(parent);
     }
 

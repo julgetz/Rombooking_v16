@@ -11,7 +11,7 @@ public class CampusTable {
     public static final String CAMPUS_NAVN = "campus_navn"; //varchar
 
 
-    private static final String CAMPUS_DATA_TABLE_CREATE = "create table"
+    private static final String CAMPUS_DATA_TABLE_CREATE = "create table "
             + CAMPUS_DATA_TABLE
             + " (" + CAMPUS_ID + " text primary key not null, "
             + CAMPUS_NAVN + " text" + ");";

@@ -13,9 +13,9 @@ public class UtstyrTable {
     public static final String UTSTYR_NAVN = "utstyr_navn";
 
 
-    private static  final String UTSTYR_DATA_TABLE_CREATE = "create table"
+    private static  final String UTSTYR_DATA_TABLE_CREATE = "create table "
             + UTSTYR_DATA_TABLE
-            + " (" + UTSTYR_KODE + " text primary key not null"
+            + " (" + UTSTYR_KODE + " text primary key not null, "
             + UTSTYR_NAVN + " text"  + ");";
 
     public static void onCreate(SQLiteDatabase database) {

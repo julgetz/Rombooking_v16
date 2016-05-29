@@ -15,7 +15,7 @@ public class RomUtstyrTable {
 
     private static  String ROM_UTSTYR_DATA_TABLE_CREATE = "create table "
             + ROM_UTSTYR_DATA_TABLE
-            + " (" + UTSTYR_KODE + "INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 1, "
+            + " (" + UTSTYR_KODE + " integer primay key not null, "
             + ROM_KODE + " text" + ");";
 
 

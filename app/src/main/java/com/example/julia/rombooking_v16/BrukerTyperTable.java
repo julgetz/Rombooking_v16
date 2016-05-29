@@ -11,7 +11,7 @@ public class BrukerTyperTable {
     public static final String BRUKER_TYPE_NAVN = "bruker_type_navn"; //varchar
 
 
-    public static final String BRUKER_TYPER_DATA_TABLE_CREATE = "create table"
+    public static final String BRUKER_TYPER_DATA_TABLE_CREATE = "create table "
             + BRUKER_TYPER_DATA_TABLE
             + " (" + BRUKER_TYPE_ID + " integer primary key autoincrement, "
             + BRUKER_TYPE_NAVN + " text" + ");";

@@ -13,9 +13,9 @@ public class GruppenavnTable {
     public static final String GRUPPENAVN = "gruppenavn";
 
 
-    private static final String GRUPPE_NAVN_TABLE_CREATE = "create table"
+    private static final String GRUPPE_NAVN_TABLE_CREATE = "create table "
             + GRUPPE_NAVN_DATA_TABLE
-            + " (" + GRUPPE_KODE + "integer primary key autoincrement, "
+            + " (" + GRUPPE_KODE + " integer primary key autoincrement, "
             + GRUPPENAVN + " text"  + ");";
 
     public static void onCreate(SQLiteDatabase database) {

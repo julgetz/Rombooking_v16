@@ -11,6 +11,8 @@ import com.google.gson.Gson;
 public class MainActivity extends AppCompatActivity {
 
     private Gson gson;
+    private DataSource dataSource;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,32 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+    @Override
+    protected  void onStart(){
+        super.onStart();
+
+        // creates a new DataSource-object that we use to interact with the database
+        dataSource = new DataSource(this);
+
+        dataSource.open(); // opens database connection
+        //dataSource.deleteWeatherDataTable();
+
+
+
+    }
+
+
+
+
+
+    // closes database connectio
+    @Override
+    protected  void onStop(){
+        super.onStop();
+        dataSource.close();
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

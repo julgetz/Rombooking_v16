@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "Rombookinga";
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 1;
 
 
     public MySQLiteHelper(Context context) {
@@ -24,7 +24,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         BrukerTable.onCreate(database);
         BrukerTyperTable.onCreate(database);
         GrupperTable.onCreate(database);
-        GrupperTable.onCreate(database);
+        GruppenavnTable.onCreate(database);
         ReservasjonerTable.onCreate(database);
         RomTable.onCreate(database);
         RomTypeTable.onCreate(database);
