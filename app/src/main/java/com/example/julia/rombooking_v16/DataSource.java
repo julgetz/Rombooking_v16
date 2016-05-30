@@ -6,13 +6,11 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-
 public class DataSource {
 
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
     private Activity parent;
-   //private RomBookingActivity parent;
 
     public String[] romCol = {
             RomTable.ROM_KODE,
@@ -84,13 +82,9 @@ public class DataSource {
         dbHelper = new MySQLiteHelper(parent);
     }
 
-    // åpner datbasen, har nå et sqlitedatbse-objekt
     public void open() throws SQLException {
-        database = dbHelper.getReadableDatabase();
         database = dbHelper.getWritableDatabase();
     }
-
-    // lukker databsen
 
     public void close() {
         dbHelper.close();
@@ -115,10 +109,9 @@ public class DataSource {
             return true;
         else
             return false;
-
     }
 
-     // BRRUKER TYPE
+    // BRRUKER TYPE
     // add bruker typer to the database
     public boolean creatBrukerTyperData(Bruker bruker) {
         ContentValues values = new ContentValues();
@@ -129,8 +122,8 @@ public class DataSource {
             return true;
         else
             return false;
-
     }
+
     // CAMPUS
     // add campus to the databse
     public boolean createCampusData(Rom rom) {
@@ -144,7 +137,7 @@ public class DataSource {
             return false;
     }
 
-     // GRUPPE NAVN
+    // GRUPPE NAVN
     // add gruppe navn to the database
     public boolean createGruppeNavnData(Gruppenavn gruppenavn){
         ContentValues values = new ContentValues();
@@ -157,7 +150,8 @@ public class DataSource {
         else
             return false;
     }
-     // GRUPPER
+
+    // GRUPPER
     // add grupper to the datbase
     public boolean createGrupperData(Grupper grupper){
         ContentValues values = new ContentValues();
@@ -188,10 +182,9 @@ public class DataSource {
             return true;
         else
             return false;
-
     }
 
-     // ROM
+    // ROM
     // adds rom to the database
     public boolean createRomData(Rom rom) {
         ContentValues values = new ContentValues();
@@ -207,7 +200,6 @@ public class DataSource {
             return true;
         else
             return false;
-
     }
      // ROM TYPER
     // add rom type to the databse
@@ -239,7 +231,7 @@ public class DataSource {
 
     }
 
-     //  UTSYTR
+    // UTSYTR
     // adds utstyr to the database
     public boolean createUtstyrData(Utstyr utstyr) {
         ContentValues values = new ContentValues();
@@ -251,10 +243,7 @@ public class DataSource {
             return true;
         else
             return false;
-
     }
-
-
 
     // henter alle rom
     public Cursor getAllRoms() {
@@ -264,43 +253,31 @@ public class DataSource {
 
     // henter all rom data
     public Cursor getRomDataById(String romKode) {
-        String selectQuery = "select * from rom where rom_kode = ?";
+        String selectQuery = "SELECT * FROM rom WHERE rom_kode = ?";
         String[] selectParams = new String[]{String.valueOf(romKode)};
         Cursor cursor = database.rawQuery(selectQuery, selectParams);
         return cursor;
-
     }
 
-    /*
-        // henter alle rom
-        public Cursor getAllroms() {
-            Cursor cursor = database.query(RomTable.ROM_DATA_TABLE, romCol, null, null, null, null, null);
-            return cursor;
-        }
-
-    */
     // henter alle reservasjoner
     public Cursor GetAllReservasjoner() {
         Cursor cursor = database.query(ReservasjonerTable.RESERVASJONER_DATA_TABLE, reservasjonerCol, null, null, null, null, null);
         return cursor;
-
-
     }
-  /*
+
+    /*
     // henter alle brukere
     public  Cursor getAllBrukere(){
         Cursor cursor = database.query(BrukerTable.BRUKER_DATA_TABLE, brukerCol, null, null, null, null, null);
         return cursor;
-        */
+    */
 
-
-    // henter reservasjons basert på bruker
+    // henter reservasjon basert på bruker
     public Cursor getReservationDataByBruker(String bruker_kode) {
-        String query = "SELECT * FROM reservasjoner where gruppe_leder = ?";
+        String query = "SELECT * FROM reservasjoner WHERE gruppe_leder = ?";
         String[] params = new String[]{String.valueOf(bruker_kode)};
         Cursor cursor = database.rawQuery(query, params);
         return cursor;
-
     }
 
     // henter reservasjoner basert på reservasjons id
@@ -311,28 +288,22 @@ public class DataSource {
         return cursor;
     }
 
-
     // henter alle reservasjoner
     public  Cursor getAllReservations(){
-        String query = "SELECT *, gruppenavn \n" +
-                "                FROM reservasjoner\n" +
-                "                JOIN gruppenavn \n" +
+        String query = "SELECT *, gruppenavn" +
+                "                FROM reservasjoner" +
+                "                JOIN gruppenavn" +
                 "                ON reservasjoner.gruppe_kode = gruppenavn.gruppe_kode";
         Cursor cursor = database.rawQuery(query, null);
         return cursor;
-
     }
-
-
-
-
 
     // henter bruker basert på bruker_kode
     public Cursor getBrukerByBrukerKode(String bruker_kode) {
-        String query = "SELECT *, bruker_type_navn \n" +
-                "                FROM brukere \n" +
-                "                JOIN bruker_typer \n" +
-                "                ON brukere.bruker_type_id = bruker_typer.bruker_type_id\n" +
+        String query = "SELECT *, bruker_type_navn" +
+                "                FROM brukere" +
+                "                JOIN bruker_typer" +
+                "                ON brukere.bruker_type_id = bruker_typer.bruker_type_id" +
                 "                WHERE bruker_kode = ?";
 
         String[] params = new String[]{String.valueOf(bruker_kode)};
@@ -342,9 +313,9 @@ public class DataSource {
 
     // henter alle brukere
     public Cursor getAllBrukere() {
-        String query = "SELECT *, bruker_type_navn \n" +
-                "                FROM brukere \n" +
-                "                JOIN bruker_typer \n" +
+        String query = "SELECT *, bruker_type_navn" +
+                "                FROM brukere" +
+                "                JOIN bruker_typer" +
                 "                ON brukere.bruker_type_id = bruker_typer.bruker_type_id";
 
 
@@ -354,8 +325,8 @@ public class DataSource {
 
     // rediger reservasjon basert på reservasjons id
     public Cursor EditReservasjon(int reservasjon_id, String fra, String til, String formal) {
-        String query = "UPDATE reservasjoner \n" +
-                "            SET fra = ?, til = ?, formal = ?\n" +
+        String query = "UPDATE reservasjoner" +
+                "            SET fra = ?, til = ?, formal = ?" +
                 "            WHERE reservasjons_id = ?";
         String[] params = new String[]{String.valueOf(reservasjon_id), String.valueOf(fra), String.valueOf(til), String.valueOf(formal)};
         Cursor cursor = database.rawQuery(query, params);
@@ -376,11 +347,12 @@ public class DataSource {
         String query = " SELECT * FROM rom";
         Cursor cursor = database.rawQuery(query, null);
         return cursor;
-
     }
-        // creates and returns a User object based on the currently selected pointer in referre cursor
-        public Bruker cursorToBruker(Cursor cursor){
-          Bruker bruker = new Bruker();
+
+    // creates and returns a User object based on the currently selected pointer in referre cursor
+    public Bruker cursorToBruker(Cursor cursor) {
+
+        Bruker bruker = new Bruker();
 
         int bruker_kode = cursor.getColumnIndexOrThrow(BrukerTable.BRUKER_KODE);
         int fornavn = cursor.getColumnIndexOrThrow(BrukerTable.FORNAVN);
@@ -401,12 +373,11 @@ public class DataSource {
         bruker.setOpprettet(cursor.getString(opptettet));
 
         return bruker;
-
-
     }
 
     // creates and returns a BrukerTyper object
-    public BrukerTyper cursorToBrukerTyper(Cursor cursor){
+    public BrukerTyper cursorToBrukerTyper(Cursor cursor) {
+
         BrukerTyper brukerTyper = new BrukerTyper();
 
         int bruker_type_id = cursor.getColumnIndexOrThrow(BrukerTyperTable.BRUKER_TYPE_ID);
@@ -419,7 +390,8 @@ public class DataSource {
     }
 
     // creates and returns a Campus object
-    public Campus cursorToCampus(Cursor cursor){
+    public Campus cursorToCampus(Cursor cursor) {
+
         Campus campus = new Campus();
 
         int campus_id = cursor.getColumnIndexOrThrow(CampusTable.CAMPUS_ID);
@@ -432,8 +404,8 @@ public class DataSource {
     }
 
     // creates and returns a gruppe navn object
+    public Gruppenavn cursorToGruppenavn(Cursor cursor) {
 
-    public Gruppenavn cursorToGruppenavn(Cursor cursor){
         Gruppenavn gruppeNavn = new Gruppenavn();
 
         int gruppe_kode = cursor.getColumnIndexOrThrow(GruppenavnTable.GRUPPE_KODE);
@@ -443,11 +415,11 @@ public class DataSource {
         gruppeNavn.setGruppenavn(cursor.getString(gruppe_navn));
 
         return  gruppeNavn;
-
     }
 
     // create and reutns grupper object
-    public Grupper cursorToGrupper(Cursor cursor){
+    public Grupper cursorToGrupper(Cursor cursor) {
+
         Grupper grupper = new Grupper();
 
         int gruppe_kode = cursor.getColumnIndexOrThrow(GrupperTable.GRUPPE_KODE);
@@ -460,7 +432,7 @@ public class DataSource {
     }
 
     // creates and returns a resertvation object
-    public Reservasjon cursortoReservasjon(Cursor cursor){
+    public Reservasjon cursortoReservasjon(Cursor cursor) {
         Reservasjon reservasjon = new Reservasjon();
         int reservasjons_id = cursor.getColumnIndexOrThrow(ReservasjonerTable.RESERVASJONS_ID);
         int fra = cursor.getColumnIndexOrThrow(ReservasjonerTable.FRA);
@@ -479,11 +451,11 @@ public class DataSource {
         reservasjon.setFormal(cursor.getString(formal));
 
         return  reservasjon;
-
     }
 
     // crate and returns an rom object
-    public Rom cursorToRom(Cursor cursor){
+    public Rom cursorToRom(Cursor cursor) {
+
         Rom rom = new Rom();
 
         int rom_kode = cursor.getColumnIndexOrThrow(RomTable.ROM_KODE);
@@ -503,9 +475,9 @@ public class DataSource {
         return  rom;
     }
 
-
     // creates and returns rom typer object
-    public RomTyper cursorToRomTyper(Cursor cursor){
+    public RomTyper cursorToRomTyper(Cursor cursor) {
+
         RomTyper romTyper = new RomTyper();
 
         int rom_type_kode = cursor.getColumnIndexOrThrow(RomTypeTable.ROM_TYPE_KODE);
@@ -516,7 +488,8 @@ public class DataSource {
     }
 
     // create and return rom utstyr object
-    public RomUtstyr cursorToRomUtstyr(Cursor cursor){
+    public RomUtstyr cursorToRomUtstyr(Cursor cursor) {
+
         RomUtstyr romUtstyr = new RomUtstyr();
 
         int utstyr_kode = cursor.getColumnIndexOrThrow(RomUtstyrTable.UTSTYR_KODE);
@@ -529,7 +502,7 @@ public class DataSource {
     }
 
     // create and reutnr a utstyrs object
-    public Utstyr cursorToUtsyr(Cursor cursor){
+    public Utstyr cursorToUtsyr(Cursor cursor) {
         Utstyr utstyr = new Utstyr();
 
         int utstyr_kode = cursor.getColumnIndexOrThrow(UtstyrTable.UTSTYR_KODE);
@@ -540,16 +513,7 @@ public class DataSource {
 
         return  utstyr;
     }
-
-
-
-
-
-
-
-
-
-    }
+}
 
 
 

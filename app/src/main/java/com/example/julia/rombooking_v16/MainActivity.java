@@ -6,13 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.gson.Gson;
-
 public class MainActivity extends AppCompatActivity {
 
-    private Gson gson;
     private DataSource dataSource;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +30,12 @@ public class MainActivity extends AppCompatActivity {
         dataSource = new DataSource(this);
 
         dataSource.open(); // opens database connection
-        //dataSource.deleteWeatherDataTable();
+
+        Intent loginIntent = new Intent(this, RegisterUserActivity.class);
+        startActivity(loginIntent);
     }
 
-    // closes database connectio
+    // closes database connection
     @Override
     protected  void onStop(){
         super.onStop();
@@ -78,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent kvitteringIntent = new Intent(this,KvitteringActivity.class);
                 startActivity(kvitteringIntent);
                 break;
-
             case R.id.book_rom_dine_reservasjoner:
                 Intent dineReservasjonerIntent = new Intent(this,ReservasjonerActivity.class);
                 startActivity(dineReservasjonerIntent);

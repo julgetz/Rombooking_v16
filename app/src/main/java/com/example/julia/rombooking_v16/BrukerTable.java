@@ -32,7 +32,6 @@ public class BrukerTable {
             + VERTIFISERT + " integer, "
             + OPPRETTET + " text " + ");";
 
-
     public static void onCreate(SQLiteDatabase database) {
         database.execSQL(BRUKER_DATA_TABLE_CREATE);
     }
@@ -44,7 +43,5 @@ public class BrukerTable {
 
         database.execSQL("DROP TABLE IF EXISTS '" + BRUKER_DATA_TABLE + "'");
         onCreate(database);
-
-
     }
 }

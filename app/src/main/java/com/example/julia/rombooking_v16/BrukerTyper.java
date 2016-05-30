@@ -10,12 +10,9 @@ public class BrukerTyper {
     private int bruker_type_id;
     private String bruker_type_navn;
 
-
-
     public BrukerTyper(){
-        this.bruker_type_id = 0;
-        this.bruker_type_navn = "";
-
+        this.bruker_type_id = 1;
+        this.bruker_type_navn = "Student 1";
     }
 
     public BrukerTyper(int bruker_type_id, String bruker_type_navn) {
@@ -40,8 +37,7 @@ public class BrukerTyper {
     }
 
     public String toJsonString(){
-        Gson gson = new Gson();
-        String json = gson.toJson(this);
-        return  json;
+        String json = new Gson().toJson(this);
+        return json;
     }
 }

@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Rombooking</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="reg_navn_mail_lengde">Må være mellom 3-50 bokstaver</string>
+    <string name="reg_email_match">Emailene må være like</string>
+    <string name="reg_email_ugyldig">Ugyldig email-adresse</string>
+    <string name="reg_passord_lengde">Må være mellom 6-20 bokstaver</string>
+    <string name="reg_passord_match">Passordene må være like</string>
+
+    <!-- TODO: Gjør slik at all tekst på UI-elementa peike til denna fila istedenfor hardkoda -->
 </resources>
