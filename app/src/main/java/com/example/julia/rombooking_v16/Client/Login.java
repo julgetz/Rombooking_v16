@@ -5,8 +5,7 @@ package com.example.julia.rombooking_v16.Client;
  */
 public class Login {
 
-    public static String tempSessionKey = "9dfcd5e558dfa04aaf37f137a1d9d3e5";
-    String sessionKey;
+    String sessionKey = "0";
 
     public void setSessionKey(String key) {
         this.sessionKey = key;

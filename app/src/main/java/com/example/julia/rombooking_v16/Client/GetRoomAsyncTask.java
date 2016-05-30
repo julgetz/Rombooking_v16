@@ -34,7 +34,6 @@ public class GetRoomAsyncTask extends AsyncTask<ContextUrl, String, String> {
 
             client.execute(request);
 
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (URISyntaxException e) {
@@ -49,8 +48,6 @@ public class GetRoomAsyncTask extends AsyncTask<ContextUrl, String, String> {
 
     @Override
     protected void onPostExecute(String result) {
-
-
 
     }
 }

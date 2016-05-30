@@ -1,31 +1,14 @@
 package com.example.julia.rombooking_v16.Client;
 
 import android.content.Context;
-import android.net.Uri;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by sitha on 28.05.2016.
  */
 public class RequestData {
 
-    public void ConnectToDatabase (String username, String password) {
+    /*
+    public void connectToDatabase (String username, String password) {
 
         List<NameValuePair> list = new ArrayList<NameValuePair>();
         list.add(new BasicNameValuePair("name", username));
@@ -33,55 +16,59 @@ public class RequestData {
         RequestTask task = new RequestTask();
         task.execute(username);
     }
+    */
 
-    public void RegisterUser(String fornavn, String etternavn, String epost, String passord, String bruker_kode) {
+    public void registerUser(String fornavn, String etternavn, String epost, String passord,
+                             String bruker_kode, Context context) {
         String urlString = "/registerUser.php?fornavn=" + fornavn + "&etternavn=" + etternavn + "&epost=" + epost
                 + "&passord=" + passord + "&bruker_kode=" + bruker_kode;
-        RequestTask registerUserTask = new RequestTask();
-        registerUserTask.execute(urlString);
+        ContextUrl contextUrl = new ContextUrl(context, urlString);
+        new RequestTask().execute(contextUrl);
     }
 
-    public void Login(String email, String passord) {
+    public void login(String email, String passord, Context context) {
         String urlString = "/login.php?epost=" + email + "&passord= " + passord;
-        LoginAyncTask loginTask = new LoginAyncTask();
-        loginTask.execute(urlString);
+        ContextUrl contextUrl = new ContextUrl(context, urlString);
+        new RequestTask().execute(contextUrl);
     }
 
-    public void GetRoom(String sessionKey, String brukerkode, Context context) {
+    public void getRoom(String sessionKey, String brukerkode, Context context) {
         String urlString = "/getRoom.php?sessionkey=" + sessionKey + "&bruker_kode=" + brukerkode;
         ContextUrl contextUrl = new ContextUrl(context, urlString);
         GetRoomAsyncTask getroom = new GetRoomAsyncTask();
         getroom.execute(contextUrl);
-
     }
 
-    public void GetReservation(String sessionKey, String brukerkode, int reservasjonsId) {
+    public void getReservation(String sessionKey, String brukerkode, int reservasjonsId, Context context) {
         String urlString = "/getReservation.php?sessionkey=" + sessionKey + "&bruker_kode=" + brukerkode
                 + "&reservasjons_id=" + reservasjonsId;
+        ContextUrl contextUrl = new ContextUrl(context, urlString);
         GetReservationAsyncTask getReservation = new GetReservationAsyncTask();
-        getReservation.execute(urlString);
+        getReservation.execute(contextUrl);
     }
 
-    public void GetUser(String sessionKey, String brukerkode) {
-        String urlString = "/getUser.php?sessionkey=" + sessionKey + "bruker_kode=" + brukerkode;
+    public void getUser(String sessionKey, String brukerkode, Context context) {
+        String urlString = "/getUser.php?sessionkey=" + sessionKey + "&bruker_kode=" + brukerkode;
+        ContextUrl contextUrl = new ContextUrl(context, urlString);
         GetUserAsyncTask getUser = new GetUserAsyncTask();
-        getUser.execute(urlString);
+        getUser.execute(contextUrl);
     }
 
-    public void AddReservation(String sessionKey, String brukerkode, String fra, String til,
-                               int romkode, int gruppekode, String gruppeleder, String formal) {
-        String urlString = "/addReservation.php";
-        AddReservationAsyncTask addReservation = new AddReservationAsyncTask();
-        addReservation.execute(urlString);
-        //STRUKTUR (eksempel): ...?fra=2016-05-07%14:30&til=2016-05-07%15:30&
-        //  rom_kode=B1060&gruppe_kode=40&gruppe_leder=jdy003&formal=siljeSkalSvetteLoLsnart
+    public void addReservation(String sessionKey, String brukerkode, String fra, String til,
+                               String romkode, int gruppekode, String gruppeleder, String formal, Context context) {
+        String urlString = "/addReservation.php?sessionkey=" + sessionKey + "&bruker_kode=" + brukerkode
+                + "&fra=" + fra + "&til=" + til + "&rom_kode=" + romkode + "&gruppe_kode=" + gruppekode
+                + "&gruppeleder=" + gruppeleder + "&formal=" + formal;
+        ContextUrl contextUrl = new ContextUrl(context, urlString);
+        new RequestTask().execute(contextUrl);
     }
 
-    public void EditReservation(String sesstionKey, String brukerkode, String fra, String til,
-                                String formal, String reservasjonsId) {
-        String urlString = "editReservation.php";
+    public void editReservation(String sessionKey, String brukerkode, String fra, String til,
+                                String formal, String reservasjonsId, Context context) {
+        String urlString = "/editReservation.php?sessionkey=" + sessionKey + "&bruker_kode=" + brukerkode
+                + "&fra=" + fra + "&til=" + til + "&formal=" + formal + "&reservasjons_id=" + reservasjonsId;
+        ContextUrl contextUrl = new ContextUrl(context, urlString);
         EditReservationAsyncTask editReservation = new EditReservationAsyncTask();
-        editReservation.execute(urlString);
+        editReservation.execute(contextUrl);
     }
-
 }

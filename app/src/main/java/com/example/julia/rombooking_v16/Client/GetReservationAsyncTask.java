@@ -1,5 +1,6 @@
 package com.example.julia.rombooking_v16.Client;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 import org.apache.http.client.HttpClient;
@@ -15,22 +16,23 @@ import java.net.URL;
 /**
  * Created by sitha on 29.05.2016.
  */
-public class GetReservationAsyncTask extends AsyncTask <String, String, String> {
+public class GetReservationAsyncTask extends AsyncTask <ContextUrl, String, String> {
 
+    private Context context;
 
-    protected String doInBackground(String... params) {
+    protected String doInBackground(ContextUrl... params) {
         String link = "https://android-rombooking-mbruksaas.c9users.io";
         try {
             URL url = new URL(link);
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();
-            String urlString = params[0];
-
+            ContextUrl contextUrl = params[0];
+            String urlString = contextUrl.getUrl();
+            context = contextUrl.getActiveContext();
 
             request.setURI(new URI(link + urlString));
 
             client.execute(request);
-
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -46,5 +48,6 @@ public class GetReservationAsyncTask extends AsyncTask <String, String, String> 
 
     @Override
     protected void onPostExecute(String result) {
+
     }
 }
