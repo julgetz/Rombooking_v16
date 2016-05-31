@@ -2,9 +2,6 @@ package com.example.julia.rombooking_v16;
 
 import com.google.gson.Gson;
 
-/**
- * Created by Julia on 31.05.2016.
- */
 public class Login {
 
     private String email;

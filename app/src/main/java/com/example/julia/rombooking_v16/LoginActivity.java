@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,15 +18,8 @@ import java.net.URL;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private  EditText email;
+    private EditText email;
     private EditText password;
-    private TextView sessionkeye;
-    private DataSource dataSource;
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.et_login_passord);
 
         Button btnReg = (Button) findViewById(R.id.bt_login_reg);
+        assert btnReg != null;
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         Button bt_login = (Button) findViewById(R.id.bt_login);
+        assert bt_login != null;
         bt_login.setOnClickListener(new View.OnClickListener() {
 
 
@@ -78,42 +72,24 @@ public class LoginActivity extends AppCompatActivity {
             new LoginTask().execute(email.getText().toString(), password.getText().toString());
     }
 
-    private void login(String respone) {
+    private void login(String response) {
 
         //Checks for error-codes
-        if(respone == "-1") {
-
+        if(response.equals("-1")) {
             email.setHint(getString(R.string.login_ikke_verifisert));
             email.setText("");
+        } else if(response.equals("-2")) {
+            email.setHint(getString(R.string.login_match));
+            email.setText("");
+            password.setHint(getString(R.string.login_match));
+            password.setText("");
         } else {
-            if (respone == "-2") {
-                email.setHint(getString(R.string.login_match));
-                email.setText("");
-                password.setHint(getString(R.string.login_match));
-                password.setText("");
-            } else {
-                if(respone == "-3"){
-                    dataSource.createLoginData(new Login(email.getText().toString(), password.getText().toString(), sessionkeye.getText().toString()));
-                    LoginTask loginTask = new LoginTask();
-                    loginTask.onPostExecute(respone);
-                    finish();
-                    }
 
-
-                }
-
-            }
-
-            }
-
-
-            // TODO: Julia: Lagre epost, passord og sessionkey(respone) i lokal DB
-
-
+            new DataSource.createLoginData(new Login(email.getText().toString(), password.getText().toString(), response));
+        }
+    }
 
     private class LoginTask extends AsyncTask<String, String, String> {
-
-
 
         @Override
         protected String doInBackground(String... params) {
@@ -168,8 +144,3 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 }
-
-
-
-
-

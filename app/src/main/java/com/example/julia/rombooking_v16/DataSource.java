@@ -186,7 +186,8 @@ public class DataSource {
         else
             return false;
     }
-     // ROM TYPER
+
+    // ROM TYPER
     // add rom type to the databse
     public boolean createRomTyper(Rom rom) {
         ContentValues values = new ContentValues();
@@ -197,8 +198,6 @@ public class DataSource {
             return true;
         else
             return false;
-
-
     }
 
     // ROM UTSTYR
