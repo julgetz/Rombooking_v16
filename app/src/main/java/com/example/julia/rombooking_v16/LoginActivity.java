@@ -20,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText email;
     private EditText password;
+    private  DataSource datasoruce;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
             password.setText("");
         } else {
 
-            new DataSource.createLoginData(new Login(email.getText().toString(), password.getText().toString(), response));
+            datasoruce.createLoginData(new Login(email.getText().toString(), password.getText().toString(), response));
         }
     }
 
