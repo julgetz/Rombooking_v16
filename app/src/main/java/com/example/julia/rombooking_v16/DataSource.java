@@ -12,6 +12,13 @@ public class DataSource {
     private MySQLiteHelper dbHelper;
     private Activity parent;
 
+
+    public String[] loginCol = {
+            LoginTable.EMAIL,
+            LoginTable.PASSORD,
+            LoginTable.SESSIONKEYE,
+    };
+
     public String[] romCol = {
             RomTable.ROM_KODE,
             RomTable.ROM_NAVN,
@@ -82,12 +89,48 @@ public class DataSource {
         dbHelper = new MySQLiteHelper(parent);
     }
 
+    public DataSource(LoginActivity loginActivity) {
+        parent = loginActivity;
+        dbHelper = new MySQLiteHelper(parent);
+    }
+
     public void open() throws SQLException {
         database = dbHelper.getWritableDatabase();
     }
 
     public void close() {
         dbHelper.close();
+    }
+
+
+    //LOGIN
+    // adds login data to the datbase
+    public boolean createLoginData(Login login){
+     ContentValues values = new ContentValues();
+        values.put(LoginTable.EMAIL, login.getEmail());
+        values.put(LoginTable.PASSORD, login.getPassord());
+        values.put(LoginTable.SESSIONKEYE, login.getSessionkeye());
+
+
+        long insertId = database.insert(LoginTable.LOGIN_DATA_TABLE, null, values);
+        if (insertId >= 0)
+            return true;
+        else
+            return false;
+
+
+    }
+
+    public Login cursorToLogin(Cursor cursor){
+        Login login = new Login();
+
+        int emial = cursor.getColumnIndexOrThrow(LoginTable.EMAIL);
+        int passord = cursor.getColumnIndexOrThrow(LoginTable.PASSORD);
+
+        login.setEmail(cursor.getString(emial));
+        login.setPassord(cursor.getString(passord));
+
+        return login;
     }
 
     //BRUKER
@@ -123,6 +166,9 @@ public class DataSource {
         else
             return false;
     }
+
+
+
 
     // GRUPPE NAVN
     // add gruppe navn to the database
