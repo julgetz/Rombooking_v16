@@ -31,6 +31,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         RomUtstyrTable.onCreate(database);
         UtstyrTable.onCreate(database);
         CampusTable.onCreate(database);
+        LoginTable.onCreate(database);
 
     }
 
@@ -46,7 +47,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         RomUtstyrTable.onUpgrade(db, oldVersion, newVersion);
         UtstyrTable.onUpgrade(db, oldVersion, newVersion);
         CampusTable.onUpgrade(db, oldVersion, newVersion);
-
+        LoginTable.onUpgrade(db,oldVersion, newVersion);
     }
     @Override
     public void onOpen(SQLiteDatabase database) {

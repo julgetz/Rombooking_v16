@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         // creates a new DataSource-object that we use to interact with the database
         dataSource = new DataSource(this);
-
         dataSource.open(); // opens database connection
     }
 
