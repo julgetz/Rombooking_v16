@@ -1,14 +1,32 @@
 <resources>
     <string name="app_name">Rombooking</string>
 
-    <string name="reg_navn_mail_lengde">Må være mellom 3-50 bokstaver</string>
-    <string name="reg_email_match">Emailene må være like</string>
-    <string name="reg_email_ugyldig">Ugyldig email-adresse</string>
-    <string name="reg_passord_lengde">Må være mellom 6-20 bokstaver</string>
+    <string name="reg_navn_mail_lengde">Må være mellom 3–50 bokstaver</string>
+    <string name="reg_email_match">Epostene må være like</string>
+    <string name="reg_email_ugyldig">Ugyldig epost-adresse</string>
+    <string name="reg_passord_lengde">Må være mellom 6–20 bokstaver</string>
     <string name="reg_passord_match">Passordene må være like</string>
 
     <string name="login_ikke_verifisert">Ikke verifisert, sjekk mail</string>
     <string name="login_match">Epost matcher ikke passord</string>
+    <string name="login_cb_huskmeg">Husk meg</string>
+    <string name="login_logg_inn">Logg inn</string>
+    <string name="login_registrer">Registrer</string>
+    <string name="login_email">Epost</string>
+    <string name="login_passord">Passord</string>
+
+    <string name="reserver_tittel">Reserver grupperom</string>
+    <string name="reserver_dato">Dato</string>
+    <string name="reserver_fra">Fra</string>
+    <string name="reserver_til">Til</string>
+    <string name="reserver_rom">Rom</string>
+    <string name="reserver_gruppe">Gruppemedlemmer</string>
+    <string name="reserver_formal">Formål</string>
+    <string name="reserver_bekreft">Bekreft</string>
+    <string name="reserver_gruppe_hint">Epost...</string>
+
+    <string name="sokrom_tittel">Søk etter grupperom</string>
+    <string name="sokrom_visledige">Vis ledige</string>
 
     <!-- TODO: Gjør slik at all tekst på UI-elementa peike til denna fila istedenfor hardkoda -->
 </resources>

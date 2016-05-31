@@ -13,10 +13,11 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:textAlignment="center"
-        android:textSize="20dp"
-        android:text="Logg inn"
+        android:textSize="20sp"
+        android:text="@string/login_logg_inn"
         android:background="#69b0a7"
         android:textColor="#ffffff"
+        tools:ignore="UnusedAttribute"
         />
 
     <LinearLayout
@@ -30,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Email"
+            android:text="@string/login_email"
             android:id="@+id/tv_login_email"
             />
 
@@ -45,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Passord"
+            android:text="@string/login_passord"
             android:id="@+id/tv_login_passord"
             />
 
@@ -56,15 +57,23 @@
             android:id="@+id/et_login_passord"
             />
 
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/cb_login_huskmeg"
+            android:text="@string/login_cb_huskmeg"
+            />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="login"
+            android:text="@string/login_logg_inn"
             android:id="@+id/bt_login"
             android:layout_gravity="center_horizontal"
             android:background="#69b0a7"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="#ffffff"
             />
 
@@ -72,17 +81,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Registrer"
+            android:text="@string/login_registrer"
             android:id="@+id/bt_login_reg"
             android:layout_gravity="center_horizontal"
             android:background="#69b0a7"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="#ffffff"
             />
 
     </LinearLayout>
 
 </LinearLayout>
-
-
-
