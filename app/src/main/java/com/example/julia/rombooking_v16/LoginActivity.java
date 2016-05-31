@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -20,6 +21,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private  EditText email;
     private EditText password;
+    private TextView sessionkeye;
+    private DataSource dataSource;
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,22 +81,39 @@ public class LoginActivity extends AppCompatActivity {
     private void login(String respone) {
 
         //Checks for error-codes
-        if(respone == -1) {
+        if(respone == "-1") {
+
             email.setHint(getString(R.string.login_ikke_verifisert));
             email.setText("");
-        } else if(respone == -2) {
-            email.setHint(getString(R.string.login_match));
-            email.setText("");
-            password.setHint(getString(R.string.login_match));
-            password.setText("");
         } else {
+            if (respone == "-2") {
+                email.setHint(getString(R.string.login_match));
+                email.setText("");
+                password.setHint(getString(R.string.login_match));
+                password.setText("");
+            } else {
+                if(respone == "-3"){
+                    dataSource.createLoginData(new Login(email.getText().toString(), password.getText().toString(), sessionkeye.getText().toString()));
+                    LoginTask loginTask = new LoginTask();
+                    loginTask.onPostExecute(respone);
+                    finish();
+                    }
+
+
+                }
+
+            }
+
+            }
+
 
             // TODO: Julia: Lagre epost, passord og sessionkey(respone) i lokal DB
 
-        }
-    }
+
 
     private class LoginTask extends AsyncTask<String, String, String> {
+
+
 
         @Override
         protected String doInBackground(String... params) {
