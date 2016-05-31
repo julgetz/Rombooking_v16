@@ -131,10 +131,7 @@ public class rombookingListFragment extends Fragment implements AdapterView.OnIt
             //Params[2] = Fra
             //Params[3] = Til
 
-            String link = "https://android-rombooking-mbruksaas.c9users.io";
-
-            String fra = "";
-            String til = "";
+            String link = "https://android-rombooking-mbruksaas.c9users.io/getRoom.php";
 
             HttpURLConnection conn = null;
             StringBuilder serverResponse = new StringBuilder();
@@ -149,7 +146,7 @@ public class rombookingListFragment extends Fragment implements AdapterView.OnIt
                 BufferedWriter wr = new BufferedWriter(
                         new OutputStreamWriter(conn.getOutputStream(), "UTF-8"));
                 wr.write("?bruker_kode=" + params[0] + "&sessionkey=" + params[1]
-                        + "&fra=" + fra + "&til=" + til);
+                        + "&fra=" + params[2] + "&til=" + params[3]);
                 wr.flush();
                 wr.close();
 
@@ -183,9 +180,6 @@ public class rombookingListFragment extends Fragment implements AdapterView.OnIt
 
             return null;
         }
-
-        @Override
-        protected void onProgressUpdate(String... values) {}
 
         @Override
         protected void onPostExecute(String reading) {

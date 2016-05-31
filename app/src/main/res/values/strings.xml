@@ -7,5 +7,8 @@
     <string name="reg_passord_lengde">Må være mellom 6-20 bokstaver</string>
     <string name="reg_passord_match">Passordene må være like</string>
 
+    <string name="login_ikke_verifisert">Ikke verifisert, sjekk mail</string>
+    <string name="login_match">Epost matcher ikke passord</string>
+
     <!-- TODO: Gjør slik at all tekst på UI-elementa peike til denna fila istedenfor hardkoda -->
 </resources>
