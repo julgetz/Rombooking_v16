@@ -104,7 +104,7 @@ public class DataSource {
      ContentValues values = new ContentValues();
         values.put(LoginTable.EMAIL, login.getEmail());
         values.put(LoginTable.PASSORD, login.getPassord());
-        values.put(LoginTable.SESSIONKEYE, login.getSessionkeye());
+        values.put(LoginTable.SESSIONKEY, login.getSessionkeye());
 
         long insertId = database.insert(LoginTable.LOGIN_DATA_TABLE, null, values);
         if (insertId >= 0)
@@ -116,10 +116,10 @@ public class DataSource {
     public Login cursorToLogin(Cursor cursor){
         Login login = new Login();
 
-        int emial = cursor.getColumnIndexOrThrow(LoginTable.EMAIL);
+        int email = cursor.getColumnIndexOrThrow(LoginTable.EMAIL);
         int passord = cursor.getColumnIndexOrThrow(LoginTable.PASSORD);
 
-        login.setEmail(cursor.getString(emial));
+        login.setEmail(cursor.getString(email));
         login.setPassord(cursor.getString(passord));
 
         return login;

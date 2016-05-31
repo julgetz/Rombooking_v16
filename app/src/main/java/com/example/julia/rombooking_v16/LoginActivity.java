@@ -85,7 +85,6 @@ public class LoginActivity extends AppCompatActivity {
             password.setHint(getString(R.string.login_match));
             password.setText("");
         } else {
-
             datasource.createLoginData(new Login(email.getText().toString(), password.getText().toString(), response));
         }
     }

@@ -3,23 +3,17 @@ package com.example.julia.rombooking_v16;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-/**
- * Created by Julia on 31.05.2016.
- */
 public class LoginTable {
     public static final String LOGIN_DATA_TABLE = "login";
     public static final String EMAIL = "email";
     public static final String PASSORD = "passord";
-    public static final String SESSIONKEYE = "response";
-
-
+    public static final String SESSIONKEY = "response";
 
     private static  final String LOGIN_DATA_TABLE_CREATE = "create table "
             + LOGIN_DATA_TABLE
             + " (" + EMAIL + " text primary key not null, "
             + PASSORD + " text, "
-            + SESSIONKEYE + " text " +  ");";
-
+            + SESSIONKEY + " text " +  ");";
 
     public  static void onCreate(SQLiteDatabase database){
         database.execSQL(LOGIN_DATA_TABLE_CREATE);
@@ -33,5 +27,4 @@ public class LoginTable {
         database.execSQL("DROP TABLE IF EXISITS " + LOGIN_DATA_TABLE);
         onCreate(database);
     }
-
 }
