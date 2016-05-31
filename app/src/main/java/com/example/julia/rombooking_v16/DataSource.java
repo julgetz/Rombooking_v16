@@ -98,6 +98,20 @@ public class DataSource {
         database = dbHelper.getWritableDatabase();
     }
 
+    // GRUPPE NAVN
+    // add gruppe navn to the database
+    public boolean createGruppeNavnData(Gruppenavn gruppenavn){
+        ContentValues values = new ContentValues();
+        values.put(GruppenavnTable.GRUPPE_KODE, gruppenavn.getGruppe_kode());
+        values.put(GruppenavnTable.GRUPPENAVN, gruppenavn.getGruppenavn());
+
+        long insertId = database.insert(GruppenavnTable.GRUPPE_NAVN_DATA_TABLE, null, values);
+        if (insertId >= 0)
+            return true;
+        else
+            return false;
+    }
+
     public void close() {
         dbHelper.close();
     }
@@ -111,14 +125,11 @@ public class DataSource {
         values.put(LoginTable.PASSORD, login.getPassord());
         values.put(LoginTable.SESSIONKEYE, login.getSessionkeye());
 
-
         long insertId = database.insert(LoginTable.LOGIN_DATA_TABLE, null, values);
         if (insertId >= 0)
             return true;
         else
             return false;
-
-
     }
 
     public Login cursorToLogin(Cursor cursor){
