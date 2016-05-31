@@ -98,25 +98,6 @@ public class DataSource {
         database = dbHelper.getWritableDatabase();
     }
 
-    // GRUPPE NAVN
-    // add gruppe navn to the database
-    public boolean createGruppeNavnData(Gruppenavn gruppenavn){
-        ContentValues values = new ContentValues();
-        values.put(GruppenavnTable.GRUPPE_KODE, gruppenavn.getGruppe_kode());
-        values.put(GruppenavnTable.GRUPPENAVN, gruppenavn.getGruppenavn());
-
-        long insertId = database.insert(GruppenavnTable.GRUPPE_NAVN_DATA_TABLE, null, values);
-        if (insertId >= 0)
-            return true;
-        else
-            return false;
-    }
-
-    public void close() {
-        dbHelper.close();
-    }
-
-
     //LOGIN
     // adds login data to the datbase
     public boolean createLoginData(Login login){
