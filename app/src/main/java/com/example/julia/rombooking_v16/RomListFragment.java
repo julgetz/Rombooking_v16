@@ -12,7 +12,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-
 public class RomListFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
@@ -42,8 +41,6 @@ public class RomListFragment extends Fragment {
 
         }
     }
-
-
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -75,8 +72,8 @@ public class RomListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_rom_list, container, false);
 
+        return inflater.inflate(R.layout.fragment_rom_list, container, false);
     }
 
     public void onButtonPressed(Uri uri) {
@@ -101,7 +98,6 @@ public class RomListFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
 
     public interface OnFragmentInteractionListener {
 

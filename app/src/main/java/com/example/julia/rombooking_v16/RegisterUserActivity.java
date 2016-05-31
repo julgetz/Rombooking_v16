@@ -42,8 +42,8 @@ public class RegisterUserActivity extends AppCompatActivity {
                 if(validateFields()) {
                     RequestData req = new RequestData();
 
-                    String subFornavn = fornavn.getText().toString().substring(0, 2);
-                    String subEtternavn = etternavn.getText().toString().substring(0, 2);
+                    String subFornavn = fornavn.getText().toString().substring(0, 3);
+                    String subEtternavn = etternavn.getText().toString().substring(0, 3);
                     String brukerKode = subFornavn + subEtternavn;
 
                     req.registerUser(fornavn.getText().toString(), etternavn.getText().toString(),

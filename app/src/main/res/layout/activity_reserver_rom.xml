@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:gravity="top"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="#ffffff"
-    android:weightSum="1">
+    android:weightSum="1"
+    >
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="40dp"
@@ -15,14 +18,16 @@
         android:text=" Reserver Grupperom"
         android:id="@+id/tv_tittel_reserver"
         android:background="#69b0a7"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <EditText
             android:id="@+id/et_reserver_dato"
@@ -32,8 +37,7 @@
             android:editable="false"
             android:textAlignment="center"
             android:background="#f3f7f7"
-            >
-        </EditText>
+            />
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -51,8 +55,9 @@
             android:layout_height="30dp"
             android:editable="false"
             android:textAlignment="center"
-            android:background="#f3f7f7">
-        </EditText>
+            android:background="#f3f7f7"
+            />
+
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="40dp"
@@ -60,7 +65,8 @@
             android:text="Fra"
             android:id="@+id/bt_reserver_tid_fra"
             android:background="#69b0a7"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff"
+            />
 
 
         <EditText
@@ -70,8 +76,9 @@
             android:layout_height="30dp"
             android:editable="false"
             android:textAlignment="center"
-            android:background="#f3f7f7">
-        </EditText>
+            android:background="#f3f7f7"
+            />
+
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="40dp"
@@ -79,8 +86,8 @@
             android:text="Til"
             android:id="@+id/bt_reserver_tid_til"
             android:background="#69b0a7"
-            android:textColor="#ffffff" />
-
+            android:textColor="#ffffff"
+            />
 
     </LinearLayout>
 
@@ -93,14 +100,14 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Grupperom"
         android:id="@+id/tv_reserver_Grupperom"
-
         />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="1">
+        android:weightSum="1"
+        >
 
         <EditText
             android:layout_width="100dp"
@@ -108,7 +115,8 @@
             android:id="@+id/ed_reserver_grupperom"
             android:layout_marginLeft="15dp"
             android:background="#f3f7f7"
-            android:layout_weight="0.85" />
+            android:layout_weight="0.85"
+            />
 
         <Button
             android:layout_width="40dp"
@@ -117,7 +125,9 @@
             android:id="@+id/bt_grupperom_remove"
             android:background="#69b0a7"
             android:textSize="20dp"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff"
+            />
+
     </LinearLayout>
 
     <TextView
@@ -128,13 +138,15 @@
         android:layout_marginLeft="4dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Student"
-        android:id="@+id/tv_reserver_stud"/>
+        android:id="@+id/tv_reserver_stud"
+        />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="1">
+        android:weightSum="1"
+        >
 
         <EditText
             android:layout_width="100dp"
@@ -143,17 +155,18 @@
             android:layout_marginLeft="15dp"
             android:background="#f3f7f7"
             android:layout_weight="0.82"
-            android:paddingEnd="@dimen/abc_action_bar_stacked_tab_max_width" />
+            android:paddingEnd="180dp"
+            />
 
         <Button
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:text="+"
             android:textSize="20dp"
-
             android:id="@+id/btn_reserver_stud_add"
             android:background="#69b0a7"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff"
+            />
 
         <Button
             android:layout_width="40dp"
@@ -163,7 +176,9 @@
             android:id="@+id/btn_reserver_stud_remove"
             android:background="#69b0a7"
             android:textSize="20dp"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff"
+            />
+
     </LinearLayout>
 
     <TextView
@@ -175,12 +190,14 @@
         android:layout_marginTop="20dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Formål"
-        android:id="@+id/tv_reserver_formål"/>
+        android:id="@+id/tv_reserver_formål"
+        />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <EditText
             android:layout_width="wrap_content"
@@ -191,7 +208,9 @@
             android:layout_weight="0.86"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:background="#f3f7f7"/>
+            android:background="#f3f7f7"
+            />
+
     </LinearLayout>
 
     <LinearLayout
@@ -199,7 +218,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
-        android:layout_weight="0.26">
+        android:layout_weight="0.26"
+        >
 
         <Button
             android:layout_width="wrap_content"
@@ -212,9 +232,10 @@
             android:textSize="20dp"
             android:layout_marginTop="20dp"
             android:textColor="#ffffff"
-            android:layout_weight="0.45" />
-    </LinearLayout>
+            android:layout_weight="0.45"
+            />
 
+    </LinearLayout>
 
 </LinearLayout>
 

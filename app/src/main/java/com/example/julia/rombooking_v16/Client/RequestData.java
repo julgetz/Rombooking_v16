@@ -39,6 +39,15 @@ public class RequestData {
         getroom.execute(contextUrl);
     }
 
+    public void getAvailableRooms(String sessionKey, String brukerkode, String fra,
+                                  String til, Context context) {
+        String urlString = "/getRoom.php?sessionkey=" + sessionKey + "&bruker_kode=" + brukerkode
+                + "&fra=" + fra + "&til=" + til;
+        ContextUrl contextUrl = new ContextUrl(context, urlString);
+        GetRoomAsyncTask getroom = new GetRoomAsyncTask();
+        getroom.execute(contextUrl);
+    }
+
     public void getReservation(String sessionKey, String brukerkode, int reservasjonsId, Context context) {
         String urlString = "/getReservation.php?sessionkey=" + sessionKey + "&bruker_kode=" + brukerkode
                 + "&reservasjons_id=" + reservasjonsId;
@@ -62,6 +71,8 @@ public class RequestData {
         ContextUrl contextUrl = new ContextUrl(context, urlString);
         new RequestTask().execute(contextUrl);
     }
+
+    // TODO: Lage addGroup og editGroup' 
 
     public void editReservation(String sessionKey, String brukerkode, String fra, String til,
                                 String formal, String reservasjonsId, Context context) {
