@@ -124,19 +124,6 @@ public class DataSource {
             return false;
     }
 
-    // CAMPUS
-    // add campus to the databse
-    public boolean createCampusData(Rom rom) {
-        ContentValues values = new ContentValues();
-        values.put(CampusTable.CAMPUS_NAVN, rom.getCampus_id());
-
-        long insertId = database.insert(CampusTable.CAMPUS_DATA_TABLE, null, values);
-        if (insertId >= 0)
-            return true;
-        else
-            return false;
-    }
-
     // GRUPPE NAVN
     // add gruppe navn to the database
     public boolean createGruppeNavnData(Gruppenavn gruppenavn){
@@ -192,8 +179,6 @@ public class DataSource {
         values.put(RomTable.ROM_NAVN, rom.getRom_navn());
         values.put(RomTable.ROM_TYPE_KODE, rom.getRom_type_kode());
         values.put(RomTable.KAPASITET_UND, rom.getKapasitet_und());
-        values.put(RomTable.CAMPUS_ID, rom.getCampus_id());
-        values.put(RomTable.ER_AKTIVT, rom.getEr_aktiv());
 
         long insertId = database.insert(RomTable.ROM_DATA_TABLE, null, values);
         if (insertId >= 0)
@@ -462,15 +447,11 @@ public class DataSource {
         int rom_navn = cursor.getColumnIndexOrThrow(RomTable.ROM_NAVN);
         int rom_type_kode = cursor.getColumnIndexOrThrow(RomTable.ROM_TYPE_KODE);
         int kapasitet_und = cursor.getColumnIndexOrThrow(RomTable.KAPASITET_UND);
-        int campus_id = cursor.getColumnIndexOrThrow(RomTable.CAMPUS_ID);
-        int er_aktiv = cursor.getColumnIndexOrThrow(RomTable.ER_AKTIVT);
 
         rom.setRom_kode(cursor.getString(rom_kode));
         rom.setRom_navn(cursor.getString(rom_navn));
         rom.setRom_type_kode(cursor.getString(rom_type_kode));
         rom.setKapasitet_und(cursor.getInt(kapasitet_und));
-        rom.setCampus_id(cursor.getString(campus_id));
-        rom.setEr_aktiv(cursor.getInt(er_aktiv));
 
         return  rom;
     }
@@ -514,43 +495,3 @@ public class DataSource {
         return  utstyr;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

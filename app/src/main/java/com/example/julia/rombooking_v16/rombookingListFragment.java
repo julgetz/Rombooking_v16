@@ -27,9 +27,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by mBruksaas on 30.05.2016.
- */
 public class rombookingListFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     private romListInterface parentActivity;
