@@ -30,9 +30,6 @@ public class MainActivity extends AppCompatActivity {
         dataSource = new DataSource(this);
 
         dataSource.open(); // opens database connection
-
-        Intent loginIntent = new Intent(this, RomBookingActivity.class);
-        startActivity(loginIntent);
     }
 
     // closes database connection
