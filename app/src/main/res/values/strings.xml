@@ -27,6 +27,11 @@
 
     <string name="sokrom_tittel">Søk etter grupperom</string>
     <string name="sokrom_visledige">Vis ledige</string>
+    <string name="sokrom_searchview_hint">Rom, kapasitet..</string>
+    <string name="sokrom_kol_rom">Rom</string>
+    <string name="sokrom_kol_alias">Alias</string>
+    <string name="sokrom_kol_rom_type">Type</string>
+    <string name="sokrom_kol_kapasitet">Kapasitet</string>
 
     <!-- TODO: Gjør slik at all tekst på UI-elementa peike til denna fila istedenfor hardkoda -->
 </resources>

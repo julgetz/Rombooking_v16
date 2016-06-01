@@ -11,15 +11,13 @@ public class Rom {
     private int kapasitet_und = 0;
 
     public Rom() {
-
         rom_kode = "";
         rom_navn = "";
         rom_type_kode = "";
         kapasitet_und = 0;
     }
 
-    public Rom(String campus_id, int er_aktiv, int kapasitet_und, String rom_kode,
-               String rom_navn, String rom_type_kode, String utstyr_kode) {
+    public Rom( int kapasitet_und, String rom_kode, String rom_navn, String rom_type_kode) {
 
         this.rom_kode = rom_kode;
         this.rom_navn = rom_navn;

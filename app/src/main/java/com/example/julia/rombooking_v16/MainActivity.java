@@ -8,8 +8,6 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DataSource dataSource;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,28 +21,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected  void onStart(){
-        super.onStart();
-
-        // creates a new DataSource-object that we use to interact with the database
-        dataSource = new DataSource(this);
-        dataSource.open(); // opens database connection
-    }
-
-    // closes database connection
-    @Override
-    protected  void onStop(){
-        super.onStop();
-        dataSource.close();
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
 
             case R.id.instillinger:
-
                 break;
             case R.id.login:
                 Intent loginIntent = new Intent(this, LoginActivity.class);

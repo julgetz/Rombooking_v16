@@ -9,10 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -21,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private DataSource datasource;
+    private MsbDataSource ds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +28,9 @@ public class LoginActivity extends AppCompatActivity {
 
         email = (EditText) findViewById(R.id.et_login_email);
         password = (EditText) findViewById(R.id.et_login_passord);
+
+        ds = new MsbDataSource(getApplicationContext());
+        ds.open();
 
         Button btnReg = (Button) findViewById(R.id.bt_login_reg);
         assert btnReg != null;
@@ -85,7 +87,11 @@ public class LoginActivity extends AppCompatActivity {
             password.setHint(getString(R.string.login_match));
             password.setText("");
         } else {
-            datasource.createLoginData(new Login(email.getText().toString(), password.getText().toString(), response));
+            //datasource.createLoginData(new Login(email.getText().toString(), password.getText().toString(), response));
+            ds.createLoginData(new Login(email.getText().toString(), password.getText().toString(), response));
+
+            Intent intent = new Intent(this, RomBookingActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -97,22 +103,17 @@ public class LoginActivity extends AppCompatActivity {
             //Params[1] = Passord
 
             String link = "https://android-rombooking-mbruksaas.c9users.io/login.php";
+            String paramString = "?epost=" + params[0] + "&passord=" + params[1];
 
             HttpURLConnection conn = null;
             StringBuilder serverResponse = new StringBuilder();
 
             try {
-                URL url = new URL(link);
+                URL url = new URL(link + paramString);
                 conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("POST");
+                conn.setRequestMethod("GET");
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
-
-                BufferedWriter wr = new BufferedWriter(
-                        new OutputStreamWriter(conn.getOutputStream(), "UTF-8"));
-                wr.write("?epost=" + params[0] + "&passord=" + params[1]);
-                wr.flush();
-                wr.close();
 
                 conn.connect();
                 if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {

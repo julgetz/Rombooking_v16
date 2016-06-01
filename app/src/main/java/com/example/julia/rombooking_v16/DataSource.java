@@ -16,7 +16,7 @@ public class DataSource {
     public String[] loginCol = {
             LoginTable.EMAIL,
             LoginTable.PASSORD,
-            LoginTable.SESSIONKEYE,
+            LoginTable.SESSIONKEY,
     };
 
     public String[] romCol = {

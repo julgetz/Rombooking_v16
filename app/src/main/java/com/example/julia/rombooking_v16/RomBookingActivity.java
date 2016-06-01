@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -20,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+@SuppressWarnings("deprecation")
 @SuppressLint("SimpleDateFormat")
 public class RomBookingActivity extends AppCompatActivity implements DialogInterface.OnClickListener,
         View.OnClickListener, rombookingListFragment.romListInterface {
@@ -35,15 +35,17 @@ public class RomBookingActivity extends AppCompatActivity implements DialogInter
     private int hourTil;
     private int minTil;
     private rombookingListFragment bookingFrag;
+    private MsbDataSource ds;
+    private String sisteFra;
+    private String sisteTil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rom_booking);
 
-        SearchView sv = (SearchView) findViewById(R.id.searchView);
-        assert sv != null;
-        sv.setQueryHint("Rom, kapasitet..");
+        ds = new MsbDataSource(getApplicationContext());
+        ds.open();
 
         tvDato = (TextView) findViewById(R.id.et_dato);
         tvTidFra = (TextView) findViewById(R.id.et_tid_fra);
@@ -69,15 +71,13 @@ public class RomBookingActivity extends AppCompatActivity implements DialogInter
             public void onClick(View v) {
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(RomBookingActivity.this, new TimePickerDialog.OnTimeSetListener() {
-
-                    @SuppressLint("SetTextI18n")
+                    @SuppressLint({"SetTextI18n", "DefaultLocale"})
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        tvTidFra.setText(hourOfDay + ":" + minute);
-
+                        tvTidFra.setText(String.format("%02d:%02d", hourOfDay, minute));
                     }
                 }, hourFra, minFra, true);
-                timePickerDialog.setTitle("select time");
+
                 timePickerDialog.show();
             }
         });
@@ -89,15 +89,13 @@ public class RomBookingActivity extends AppCompatActivity implements DialogInter
             public void onClick(View v) {
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(RomBookingActivity.this, new TimePickerDialog.OnTimeSetListener() {
-
-                    @SuppressLint("SetTextI18n")
+                    @SuppressLint({"SetTextI18n", "DefaultLocale"})
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        tvTidTil.setText(hourOfDay + ":" + minute);
+                        tvTidTil.setText(String.format("%02d:%02d", hourOfDay, minute));
                     }
                 }, hourTil, minTil, true);
 
-                timePickerDialog.setTitle("select time");
                 timePickerDialog.show();
             }
         });
@@ -110,10 +108,21 @@ public class RomBookingActivity extends AppCompatActivity implements DialogInter
             @Override
             public void onClick(View v) {
 
-                if(!getFraFormatert().isEmpty() && !getTilFormatert().isEmpty()) {
-                    // TODO: Hente bruker_kode og sessionkey fra DB for å sende til fragment
-                    bookingFrag.initListViewAndRefreshLayout("", "",
-                            getFraFormatert(), getTilFormatert());
+                String fraFormatert = getFraFormatert();
+                String tilFormatert = getTilFormatert();
+
+                if(!fraFormatert.isEmpty() && !tilFormatert.isEmpty()) {
+                    if(Long.valueOf(fraFormatert) >= Long.valueOf(tilFormatert)) {
+                        tvTidFra.setText("");
+                        tvTidTil.setText("");
+                    } else {
+                        sisteFra = fraFormatert;
+                        sisteTil = tilFormatert;
+
+                        Login li = ds.getLogin();
+                        bookingFrag.initListViewAndRefreshLayout(li.getEmail(), li.getSessionkeye(),
+                                fraFormatert, tilFormatert);
+                    }
                 }
             }
         });
@@ -125,11 +134,10 @@ public class RomBookingActivity extends AppCompatActivity implements DialogInter
         String fraFormatert = "";
 
         if(!dato.isEmpty() && !fra.isEmpty()) {
-
             try {
                 Date fraDate = new SimpleDateFormat("dd/MM/yyy HH:mm").parse(dato + " " + fra);
 
-                fraFormatert = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(fraDate);
+                fraFormatert = Long.toString(fraDate.getTime());
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -143,11 +151,10 @@ public class RomBookingActivity extends AppCompatActivity implements DialogInter
         String tilFormatert = "";
 
         if(!dato.isEmpty() && !til.isEmpty()) {
-
             try {
-                Date fraDate = new SimpleDateFormat("dd/MM/yyy HH:mm").parse(dato + " " + til);
+                Date tilDate = new SimpleDateFormat("dd/MM/yyy HH:mm").parse(dato + " " + til);
 
-                tilFormatert = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(fraDate);
+                tilFormatert = Long.toString(tilDate.getTime());
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -156,7 +163,6 @@ public class RomBookingActivity extends AppCompatActivity implements DialogInter
     }
 
     @Override
-    @Deprecated
     protected Dialog onCreateDialog(int id) {
         return new DatePickerDialog(this, datePickerListener, year, month, day);
     }
@@ -165,7 +171,7 @@ public class RomBookingActivity extends AppCompatActivity implements DialogInter
         @SuppressLint("SetTextI18n")
         public void onDateSet(DatePicker view, int selectedYear,
                               int selectedMonth, int selectedDay) {
-            tvDato.setText(selectedDay + " / " + (selectedMonth + 1) + " / " + selectedYear);
+            tvDato.setText(selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear);
         }
     };
 
@@ -177,10 +183,10 @@ public class RomBookingActivity extends AppCompatActivity implements DialogInter
 
     @Override
     public void reserverRom(String rom_kode) {
-        Intent intent = new Intent(this, RomBookingActivity.class);
+        Intent intent = new Intent(this, ReserverRomActivity.class);
         intent.putExtra("rom_kode", rom_kode);
-        intent.putExtra("fra", getFraFormatert());
-        intent.putExtra("til", getTilFormatert());
+        intent.putExtra("fra", sisteFra);
+        intent.putExtra("til", sisteTil);
         startActivity(intent);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.julia.rombooking_v16;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -48,6 +49,9 @@ public class RegisterUserActivity extends AppCompatActivity {
 
                     req.registerUser(fornavn.getText().toString(), etternavn.getText().toString(),
                             email.getText().toString(), passord.getText().toString(), brukerKode, context);
+
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
                 }
             }
         });

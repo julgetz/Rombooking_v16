@@ -38,7 +38,6 @@
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:padding="1dp"
                 android:text="@string/reserver_fra"
                 android:background="#69b0a7"
                 android:textColor="#ffffff"
@@ -48,8 +47,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:padding="2dp"
+                android:paddingLeft="5dp"
                 android:id="@+id/tv_reserver_tid_fra"
                 android:background="#f3f7f7"
+                tools:ignore="RtlHardcoded,RtlSymmetry"
                 />
 
         </LinearLayout>
@@ -65,7 +67,6 @@
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:padding="1dp"
                 android:text="@string/reserver_til"
                 android:background="#69b0a7"
                 android:textColor="#ffffff"
@@ -75,8 +76,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:padding="2dp"
+                android:paddingLeft="5dp"
                 android:id="@+id/tv_reserver_tid_til"
                 android:background="#f3f7f7"
+                tools:ignore="RtlHardcoded,RtlSymmetry"
                 />
 
         </LinearLayout>
