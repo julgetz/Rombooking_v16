@@ -1,7 +1,5 @@
 package com.example.julia.rombooking_v16;
 
-import com.google.gson.Gson;
-
 public class Login {
 
     private String email;
@@ -44,11 +42,4 @@ public class Login {
     public void setSessionkeye(String sessionkeye) {
         this.sessionkeye = sessionkeye;
     }
-
-    public String toJSONString() {
-        Gson gson = new Gson();
-        String json = gson.toJson(this);
-        return json;
-    }
-
 }

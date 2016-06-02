@@ -1,37 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.julia.rombooking_v16">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_date_range_black_48dp"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning"
+        >
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".RomBookingActivity"
+        <activity
+            android:name=".RomBookingActivity"
             android:windowSoftInputMode="stateHidden"
-            />
-        <activity android:name=".RegisterUserActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".ReservasjonerActivity" />
-        <activity android:name=".KvitteringActivity" />
-        <activity android:name=".ReserverRomActivity" />
-        <activity android:name=".SendBekreftelseActivity" />
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".RegisterUserActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ReservasjonerActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ReserverRomActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

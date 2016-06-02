@@ -1,10 +1,6 @@
 package com.example.julia.rombooking_v16;
 
-import com.google.gson.Gson;
-
-/**
- * Created by Julia on 29.05.2016.
- */
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class Reservasjon {
 
     private int reservasjons_id;
@@ -14,7 +10,6 @@ public class Reservasjon {
     private int gruppe_kode;
     private String gruppe_leder;
     private String formal;
-
 
     public Reservasjon() {
         this.reservasjons_id = 0;
@@ -90,11 +85,5 @@ public class Reservasjon {
 
     public void setTil(String til) {
         this.til = til;
-    }
-
-    public String toJSONSTRING() {
-        Gson gson = new Gson();
-        String json = gson.toJson(this);
-        return json;
     }
 }

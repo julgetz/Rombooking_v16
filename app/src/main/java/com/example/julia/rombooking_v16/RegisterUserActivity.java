@@ -2,14 +2,17 @@ package com.example.julia.rombooking_v16;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import com.example.julia.rombooking_v16.Client.RequestData;
-
+@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 public class RegisterUserActivity extends AppCompatActivity {
 
     private EditText fornavn;
@@ -40,8 +43,16 @@ public class RegisterUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(validateFields()) {
-                    RequestData req = new RequestData();
+                if (validateFields()) {
+
+                    if(!isNetworkAvailable()) {
+                        Toast.makeText(getApplicationContext(),
+                                getString(R.string.general_trenger_nettverk), Toast.LENGTH_LONG).show();
+                        vibrate();
+                        return;
+                    }
+
+                    SithaLib req = new SithaLib();
 
                     String subFornavn = fornavn.getText().toString().substring(0, 3);
                     String subEtternavn = etternavn.getText().toString().substring(0, 3);
@@ -52,6 +63,9 @@ public class RegisterUserActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
+                    finish();
+                } else {
+                    vibrate();
                 }
             }
         });
@@ -61,49 +75,49 @@ public class RegisterUserActivity extends AppCompatActivity {
         boolean allGood = true;
 
         //Checks length
-        if(fornavn.getText().toString().length() < 4 || fornavn.getText().toString().length() > 49) {
+        if (fornavn.getText().toString().length() < 4 || fornavn.getText().toString().length() > 49) {
             fornavn.setHint(getString(R.string.reg_navn_mail_lengde));
             fornavn.setText("");
             allGood = false;
         }
 
         //Checks length
-        if(etternavn.getText().toString().length() < 4 || etternavn.getText().toString().length() > 49) {
+        if (etternavn.getText().toString().length() < 4 || etternavn.getText().toString().length() > 49) {
             etternavn.setHint(getString(R.string.reg_navn_mail_lengde));
             etternavn.setText("");
             allGood = false;
         }
 
         //Checks validity of email, all emails contain @
-        if(!email.getText().toString().contains("@")) {
+        if (!email.getText().toString().contains("@")) {
             email.setHint(getString(R.string.reg_email_ugyldig));
             email.setText("");
             allGood = false;
         }
 
         //Checks length
-        if(email.getText().toString().length() == 0 || email.getText().toString().length() > 49) {
+        if (email.getText().toString().length() == 0 || email.getText().toString().length() > 49) {
             email.setHint(getString(R.string.reg_navn_mail_lengde));
             email.setText("");
             allGood = false;
         }
 
         //Checks validity of email, all emails contain @
-        if(!bekreftEmail.getText().toString().contains("@")) {
+        if (!bekreftEmail.getText().toString().contains("@")) {
             bekreftEmail.setHint(getString(R.string.reg_email_ugyldig));
             bekreftEmail.setText("");
             allGood = false;
         }
 
         //Checks length
-        if(bekreftEmail.getText().toString().length() == 0 || bekreftEmail.getText().toString().length() > 49) {
+        if (bekreftEmail.getText().toString().length() == 0 || bekreftEmail.getText().toString().length() > 49) {
             bekreftEmail.setHint(getString(R.string.reg_navn_mail_lengde));
             bekreftEmail.setText("");
             allGood = false;
         }
 
         //Checks if the emails match
-        if(!email.getText().toString().equals(bekreftEmail.getText().toString())) {
+        if (!email.getText().toString().equals(bekreftEmail.getText().toString())) {
             email.setHint(getString(R.string.reg_email_match));
             bekreftEmail.setHint(getString(R.string.reg_email_match));
             email.setText("");
@@ -112,21 +126,21 @@ public class RegisterUserActivity extends AppCompatActivity {
         }
 
         //Checks length
-        if(passord.getText().toString().length() < 6 || passord.getText().toString().length() > 19) {
+        if (passord.getText().toString().length() < 6 || passord.getText().toString().length() > 19) {
             passord.setHint(getString(R.string.reg_passord_lengde));
             passord.setText("");
             allGood = false;
         }
 
         //Checks length
-        if(bekreftPassord.getText().toString().length() < 6 || bekreftPassord.getText().toString().length() > 19) {
+        if (bekreftPassord.getText().toString().length() < 6 || bekreftPassord.getText().toString().length() > 19) {
             bekreftPassord.setHint(getString(R.string.reg_passord_lengde));
             bekreftPassord.setText("");
             allGood = false;
         }
 
         //Checks if the passwords match
-        if(!passord.getText().toString().equals(bekreftPassord.getText().toString())) {
+        if (!passord.getText().toString().equals(bekreftPassord.getText().toString())) {
             passord.setHint(getString(R.string.reg_passord_match));
             bekreftPassord.setHint(getString(R.string.reg_passord_match));
             passord.setText("");
@@ -135,5 +149,18 @@ public class RegisterUserActivity extends AppCompatActivity {
         }
 
         return allGood;
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    private void vibrate() {
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        long[] pattern = {0, 100, 100, 500};
+        v.vibrate(pattern, -1);
     }
 }

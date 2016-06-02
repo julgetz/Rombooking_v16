@@ -1,17 +1,32 @@
 <resources>
-    <string name="app_name">Rombooking</string>
+    <string name="app_name">Rombooking - UiT Narvik</string>
 
+    <string name="general_nettverksfeil">Nettverksfeil</string>
+    <string name="general_trenger_nettverk">Applikasjonen trenger nettverk for å fungere</string>
+
+    <string name="menu_book_room">Book rom</string>
+    <string name="menu_mine_reservasjoner">Mine reservasjoner</string>
+    <string name="menu_logg_ut">Logg ut</string>
+
+    <string name="reg_tittel">Registrer bruker</string>
+    <string name="reg_fornavn">Fornavn</string>
+    <string name="reg_etternavn">Etternavn</string>
+    <string name="reg_epost">Epost</string>
+    <string name="reg_bekreft_epost">Bekreft epost</string>
+    <string name="reg_passord">Passord</string>
+    <string name="reg_bekreft_passord">Bekreft passord</string>
+    <string name="reg_registrer">Registrer</string>
     <string name="reg_navn_mail_lengde">Må være mellom 3–50 bokstaver</string>
     <string name="reg_email_match">Epostene må være like</string>
     <string name="reg_email_ugyldig">Ugyldig epost-adresse</string>
-    <string name="reg_passord_lengde">Må være mellom 6–20 bokstaver</string>
+    <string name="reg_passord_lengde">Må være mellom 5–20 bokstaver</string>
     <string name="reg_passord_match">Passordene må være like</string>
 
     <string name="login_ikke_verifisert">Ikke verifisert, sjekk mail</string>
-    <string name="login_match">Epost matcher ikke passord</string>
+    <string name="login_match">Ugyldig epost/passord</string>
     <string name="login_cb_huskmeg">Husk meg</string>
     <string name="login_logg_inn">Logg inn</string>
-    <string name="login_registrer">Registrer</string>
+    <string name="login_registrer">Registrer deg</string>
     <string name="login_email">Epost</string>
     <string name="login_passord">Passord</string>
 
@@ -23,15 +38,23 @@
     <string name="reserver_gruppe">Gruppemedlemmer</string>
     <string name="reserver_formal">Formål</string>
     <string name="reserver_bekreft">Bekreft</string>
-    <string name="reserver_gruppe_hint">Epost...</string>
+    <string name="reserver_gruppe_hint">Epost…</string>
+    <string name="reserver_ugyldig_bruker">Bruker finnes ikke</string>
+    <string name="reserver_leggtilselv">Du er alltid med</string>
+    <string name="reserver_formal_ikke_tomt">Reserveringen må ha et formål</string>
 
     <string name="sokrom_tittel">Søk etter grupperom</string>
     <string name="sokrom_visledige">Vis ledige</string>
+    <string name="sokrom_ledige_rom">Ledige grupperom</string>
     <string name="sokrom_searchview_hint">Rom, kapasitet..</string>
     <string name="sokrom_kol_rom">Rom</string>
     <string name="sokrom_kol_alias">Alias</string>
     <string name="sokrom_kol_rom_type">Type</string>
     <string name="sokrom_kol_kapasitet">Kapasitet</string>
 
-    <!-- TODO: Gjør slik at all tekst på UI-elementa peike til denna fila istedenfor hardkoda -->
+    <string name="minereserv_tittel">Mine reservasjoner</string>
+    <string name="minereserv_col_rom">Rom</string>
+    <string name="minereserv_col_fra">Fra</string>
+    <string name="minereserv_col_til">Til</string>
+
 </resources>

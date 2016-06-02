@@ -5,65 +5,57 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#ffffff"
-    >
+    android:background="#ffffff">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textSize="20sp"
         android:text="@string/login_logg_inn"
         android:background="#69b0a7"
         android:textColor="#ffffff"
-        tools:ignore="UnusedAttribute"
         />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/login_email"
-            android:id="@+id/tv_login_email"
-            />
+            android:text="@string/login_email" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:id="@+id/et_login_email"
-            />
+            android:maxLength="49" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/login_passord"
-            android:id="@+id/tv_login_passord"
-            />
+            android:text="@string/login_passord" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:id="@+id/et_login_passord"
-            />
+            android:maxLength="19" />
 
         <CheckBox
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:id="@+id/cb_login_huskmeg"
-            android:text="@string/login_cb_huskmeg"
-            />
+            android:text="@string/login_cb_huskmeg" />
 
         <Button
             android:layout_width="match_parent"
@@ -71,11 +63,10 @@
             android:layout_marginTop="20dp"
             android:text="@string/login_logg_inn"
             android:id="@+id/bt_login"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:background="#69b0a7"
             android:textSize="20sp"
-            android:textColor="#ffffff"
-            />
+            android:textColor="#ffffff" />
 
         <Button
             android:layout_width="match_parent"
@@ -83,11 +74,10 @@
             android:layout_marginTop="20dp"
             android:text="@string/login_registrer"
             android:id="@+id/bt_login_reg"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:background="#69b0a7"
             android:textSize="20sp"
-            android:textColor="#ffffff"
-            />
+            android:textColor="#ffffff" />
 
     </LinearLayout>
 

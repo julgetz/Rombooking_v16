@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -29,7 +30,7 @@ import java.util.List;
 public class rombookingListFragment extends Fragment {
 
     private romListInterface parentActivity;
-    private CustomAdapter myCustomAdapter;
+    private CustomRomAdapter myCustomAdapter;
     private ArrayList<Rom> romList;
 
     public rombookingListFragment() {
@@ -41,10 +42,10 @@ public class rombookingListFragment extends Fragment {
         void reserverRom(String rom_kode);
     }
 
-    public void initListViewAndRefreshLayout (String bruker_kode, String sessionkey, String fra, String til) {
+    public void initListViewAndRefreshLayout(String bruker_kode, String sessionkey, String fra, String til) {
         romList = new ArrayList<>();
 
-        myCustomAdapter = new CustomAdapter((Context)parentActivity, R.layout.rombooking_list_item, romList);
+        myCustomAdapter = new CustomRomAdapter((Context) parentActivity, romList);
 
         ListView myListView = (ListView) getActivity().findViewById(R.id.lv_rombooking_list);
         myListView.setAdapter(myCustomAdapter);
@@ -58,23 +59,30 @@ public class rombookingListFragment extends Fragment {
         new RomListTask().execute(bruker_kode, sessionkey, fra, til);
     }
 
+    private void vibrate() {
+        Vibrator v = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+        long[] pattern = {0, 100, 100, 500};
+        v.vibrate(pattern, -1);
+    }
+
     private void updateList(String rooms) {
 
         romList.clear();
 
-        if(rooms.equals("Error: No rooms available in provided timeframe")) {
+        if (rooms.equals("-3")) {
 
-            Vibrator v = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-            long[] pattern = {0, 100, 100, 500};
-            v.vibrate(pattern, -1);
+            Toast.makeText(getActivity().getApplicationContext(),
+                    getString(R.string.general_nettverksfeil), Toast.LENGTH_LONG).show();
+            vibrate();
 
-        } else {
+        } else if(!rooms.equals("Error: No rooms available in provided timeframe")) {
 
-            Type type = new TypeToken<ArrayList<Rom>>(){}.getType();
+            Type type = new TypeToken<ArrayList<Rom>>() {
+            }.getType();
             ArrayList<Rom> dlList = new Gson().fromJson(rooms, type);
 
             //Add() must be called for the ListView to update
-            for(Rom r : dlList)
+            for (Rom r : dlList)
                 romList.add(r);
         }
         myCustomAdapter.notifyDataSetChanged();
@@ -104,13 +112,13 @@ public class rombookingListFragment extends Fragment {
         return inflater.inflate(R.layout.rombooking_list_fragment, container, false);
     }
 
-    public class CustomAdapter extends ArrayAdapter<Rom> {
-        private int res;
-        private Context context;
+    public class CustomRomAdapter extends ArrayAdapter<Rom> {
+        private final int res;
+        private final Context context;
 
-        public CustomAdapter(Context context, int resource, List<Rom> items) {
-            super(context, resource, items);
-            this.res = resource;
+        public CustomRomAdapter(Context context, List<Rom> items) {
+            super(context, R.layout.rombooking_list_item, items);
+            this.res = R.layout.rombooking_list_item;
             this.context = context;
         }
 
@@ -126,7 +134,7 @@ public class rombookingListFragment extends Fragment {
                         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 infl.inflate(res, romView, true);
             } else {
-                romView = (LinearLayout)convertView;
+                romView = (LinearLayout) convertView;
             }
 
             ((TextView) romView.findViewById(R.id.column_romkode)).setText(rom.getRom_kode());
@@ -142,14 +150,14 @@ public class rombookingListFragment extends Fragment {
 
         @Override
         protected String doInBackground(String... params) {
-            //Params[0] = Bruker_kode
+            //Params[0] = Epost
             //Params[1] = Sessionkey
             //Params[2] = Fra
             //Params[3] = Til
 
             String link = "https://android-rombooking-mbruksaas.c9users.io/getRoom.php";
             String paramString = "?epost=" + params[0] + "&sessionkey=" + params[1]
-                                    + "&fra=" + params[2] + "&til=" + params[3];
+                    + "&fra=" + params[2] + "&til=" + params[3];
 
             HttpURLConnection conn = null;
             StringBuilder serverResponse = new StringBuilder();
@@ -174,11 +182,13 @@ public class rombookingListFragment extends Fragment {
                     } catch (IOException ioe) {
                         ioe.printStackTrace();
                     }
+                } else {
+                    return "-3";
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                if (conn!=null)
+                if (conn != null)
                     conn.disconnect();
             }
             return String.valueOf(serverResponse);

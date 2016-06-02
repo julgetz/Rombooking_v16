@@ -1,42 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="18dp"
         android:orientation="horizontal"
         android:weightSum="8"
-        android:background="#32000000"
-        >
+        android:background="#f3f7f7">
 
         <TextView
             style="@style/ListColumnStyle"
             android:layout_weight="2"
-            android:text="@string/sokrom_kol_rom"
-            />
+            android:text="@string/sokrom_kol_rom" />
 
         <TextView
             style="@style/ListColumnStyle"
             android:layout_weight="3"
-            android:text="@string/sokrom_kol_alias"
-            />
+            android:text="@string/sokrom_kol_alias" />
 
         <TextView
             style="@style/ListColumnStyle"
             android:layout_weight="1.5"
-            android:text="@string/sokrom_kol_rom_type"
-            />
+            android:text="@string/sokrom_kol_rom_type" />
 
         <TextView
             style="@style/ListColumnStyle"
             android:layout_weight="1.5"
-            android:text="@string/sokrom_kol_kapasitet"
-            />
+            android:text="@string/sokrom_kol_kapasitet" />
 
     </LinearLayout>
 
@@ -44,7 +37,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lv_rombooking_list"
-        android:choiceMode="singleChoice"
-        />
+        android:choiceMode="singleChoice" />
 
 </LinearLayout>

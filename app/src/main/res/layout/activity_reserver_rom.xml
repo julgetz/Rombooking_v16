@@ -1,185 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="#ffffff"
-    >
+    android:background="#ffffff">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textSize="20sp"
         android:text="@string/reserver_tittel"
         android:background="#69b0a7"
         android:textColor="#ffffff"
-        tools:ignore="UnusedAttribute"
         />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:orientation="horizontal"
-            >
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
 
-            <Button
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/reserver_fra"
-                android:background="#69b0a7"
-                android:textColor="#ffffff"
-                android:clickable="false"
-                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal">
+
+                <Button
+                    style="@style/Widget.AppCompat.Button.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/reserver_fra"
+                    android:background="#69b0a7"
+                    android:textColor="#ffffff"
+                    android:clickable="false" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:id="@+id/tv_reserver_tid_fra"
+                    android:background="#f3f7f7"
+                    tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    style="@style/Widget.AppCompat.Button.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/reserver_til"
+                    android:background="#69b0a7"
+                    android:textColor="#ffffff"
+                    android:clickable="false" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:id="@+id/tv_reserver_tid_til"
+                    android:background="#f3f7f7"
+                    tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="2dp"
-                android:paddingLeft="5dp"
-                android:id="@+id/tv_reserver_tid_fra"
-                android:background="#f3f7f7"
-                tools:ignore="RtlHardcoded,RtlSymmetry"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            >
-
-            <Button
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/reserver_til"
-                android:background="#69b0a7"
-                android:textColor="#ffffff"
-                android:clickable="false"
-                />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:text="@string/reserver_rom" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="2dp"
-                android:paddingLeft="5dp"
-                android:id="@+id/tv_reserver_tid_til"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:textSize="18sp"
+                android:id="@+id/tv_reserver_rom"
                 android:background="#f3f7f7"
-                tools:ignore="RtlHardcoded,RtlSymmetry"
-                />
+                tools:ignore="RtlHardcoded,RtlSymmetry" />
 
-        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:text="@string/reserver_gruppe" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="20sp"
-            android:text="@string/reserver_rom"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="5dp"
-            android:id="@+id/tv_reserver_rom"
-            android:background="#f3f7f7"
-            />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:padding="5dp"
+                    android:layout_weight="8"
+                    android:id="@+id/et_reserver_group"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/reserver_gruppe_hint"
+                    android:textSize="18sp"
+                    android:background="#f3f7f7"
+                    android:maxLength="49"
+                    tools:ignore="RtlHardcoded,RtlSymmetry" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="20sp"
-            android:text="@string/reserver_gruppe"
-            />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="+"
+                    android:textSize="20sp"
+                    android:id="@+id/btn_reserver_group_add"
+                    android:background="#69b0a7"
+                    android:textColor="#ffffff"
+                    tools:ignore="HardcodedText" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal"
-            android:weightSum="10"
-            >
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/view_reserver_gruppemedlemmer" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:text="@string/reserver_formal" />
 
             <EditText
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="8"
-                android:id="@+id/et_reserver_group"
-                android:inputType="textEmailAddress"
-                android:hint="@string/reserver_gruppe_hint"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:id="@+id/et_reserver_formal"
                 android:background="#f3f7f7"
-                android:maxLength="49"
-                />
+                android:maxLength="250" />
 
             <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:text="+"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:id="@+id/bt_reserver_bekreft"
                 android:textSize="20sp"
-                android:id="@+id/btn_reserver_group_add"
+                android:text="@string/reserver_bekreft"
                 android:background="#69b0a7"
-                android:textColor="#ffffff"
-                tools:ignore="HardcodedText"
-                />
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/view_reserver_gruppemedlemmer"
-            >
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="20sp"
-            android:text="@string/reserver_formal"
-            />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="5dp"
-            android:inputType="textMultiLine"
-            android:id="@+id/et_reserver_formal"
-            android:background="#f3f7f7"
-            android:maxLength="250"
-            />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:id="@+id/bt_reserver_bekreft"
-            android:textSize="20sp"
-            android:text="@string/reserver_bekreft"
-            android:background="#69b0a7"
-            android:textColor="#ffffff"
-            />
-
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

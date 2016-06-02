@@ -2,6 +2,7 @@ package com.example.julia.rombooking_v16;
 
 import android.database.sqlite.SQLiteDatabase;
 
+@SuppressWarnings({"WeakerAccess", "UnusedParameters"})
 public class LoginTable {
     public static final String LOGIN_DATA_TABLE = "login";
     public static final String EMAIL = "email";

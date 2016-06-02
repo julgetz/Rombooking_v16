@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="#ffffff"
-    >
+    android:background="#ffffff">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:text="Registrer bruker"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="@string/reg_tittel"
         android:background="#69b0a7"
         android:textColor="#ffffff"
         />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp"
             >
@@ -35,97 +30,91 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fornavn"
-                />
+                android:text="@string/reg_fornavn"
+                android:maxLength="49" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:id="@+id/et_reg_fornavn"
-                />
+                android:maxLength="49" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
-                android:text="Etternavn"
-                />
+                android:text="@string/reg_etternavn" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:id="@+id/et_reg_etternavn"
-                />
+                android:maxLength="49" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
-                android:text="Email"
-                />
+                android:text="@string/reg_epost" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:id="@+id/et_reg_email"
-                />
+                android:maxLength="49" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
-                android:text="Bekreft email"
-                />
+                android:text="@string/reg_bekreft_epost" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:id="@+id/et_reg_bekreft_email"
-                />
+                android:maxLength="49" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
-                android:text="Passord"
-                />
+                android:text="@string/reg_passord" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:id="@+id/et_reg_passord"
-                />
+                android:maxLength="19" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
-                android:text="Bekreft passord"
-                />
+                android:text="@string/reg_bekreft_passord" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:id="@+id/et_reg_bekreft_passord"
-                />
+                android:maxLength="19" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Registrer"
+                android:text="@string/reg_registrer"
                 android:id="@+id/bt_reg_registrer"
                 android:layout_gravity="center_horizontal"
                 android:background="#69b0a7"
-                android:textSize="20dp"
-                android:textColor="#ffffff"
-                />
+                android:textSize="20sp"
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 

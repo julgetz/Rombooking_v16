@@ -6,10 +6,11 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+@SuppressWarnings("WeakerAccess")
 public class MsbDataSource {
 
     private SQLiteDatabase database;
-    private MsbMySQLiteHelper dbHelper;
+    private final MsbMySQLiteHelper dbHelper;
 
     public MsbDataSource(Context context) {
         dbHelper = new MsbMySQLiteHelper(context);
@@ -19,7 +20,7 @@ public class MsbDataSource {
         database = dbHelper.getWritableDatabase();
     }
 
-    public boolean createLoginData(Login login){
+    public void createLoginData(Login login) {
         database.execSQL("DELETE FROM " + LoginTable.LOGIN_DATA_TABLE);
 
         ContentValues values = new ContentValues();
@@ -27,19 +28,20 @@ public class MsbDataSource {
         values.put(LoginTable.PASSORD, login.getPassord());
         values.put(LoginTable.SESSIONKEY, login.getSessionkeye());
 
-        long insertId = database.insert(LoginTable.LOGIN_DATA_TABLE, null, values);
-        return insertId >= 0;
+        database.insert(LoginTable.LOGIN_DATA_TABLE, null, values);
     }
 
     public Login getLogin() {
         Login li = new Login();
         Cursor cursor = database.rawQuery("SELECT * FROM " + LoginTable.LOGIN_DATA_TABLE, null);
 
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             li.setEmail(cursor.getString(cursor.getColumnIndex(LoginTable.EMAIL)));
             li.setPassord(cursor.getString(cursor.getColumnIndex(LoginTable.PASSORD)));
             li.setSessionkeye(cursor.getString(cursor.getColumnIndex(LoginTable.SESSIONKEY)));
         }
+
+        cursor.close();
 
         return li;
     }
